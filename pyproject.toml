@@ -1,0 +1,7 @@
+[project]
+name = "simple-cdcl"
+version = "0.1.0"
+description = "A simple implementation of the Conflict-Driven Clause Learning (CDCL) framework for solving SAT problems. This project was developed as part of the course Theory and Practice of SMT Solving."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
