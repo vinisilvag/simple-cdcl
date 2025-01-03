@@ -46,6 +46,8 @@ class CDCL:
 
     def solve(self):
         def solve_rec(model):
+            return None
+
             if self.check_sat(model):
                 return model
 

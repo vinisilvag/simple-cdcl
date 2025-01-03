@@ -1,8 +1,8 @@
 import sys
+from parser import parse_dimacs_instance
 from timeit import default_timer as timer
 
 from cdcl import CDCL
-from helpers import parse_dimacs_instance
 
 
 def main():
@@ -11,14 +11,16 @@ def main():
         sys.exit(1)
 
     instance = sys.argv[1]
-    parsed = parse_dimacs_instance(instance)
-    if not parsed:
+    parsed_instance = parse_dimacs_instance(instance)
+    if not parsed_instance:
         print("fail to parse this instance")
         sys.exit(1)
 
-    print("parsed")
+    print("instance parsed")
 
-    variable_num, clause_num, clauses = parsed
+    print(parsed_instance)
+
+    variable_num, clause_num, clauses = parsed_instance
     cdcl = CDCL(variable_num, clause_num, clauses)
 
     start = timer()
