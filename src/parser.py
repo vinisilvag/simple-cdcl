@@ -3,18 +3,17 @@ from typing import Optional
 from helpers import Clause, Formula, Literal
 
 
-def parse_dimacs_instance(instance: str) -> Optional[tuple[int, int, list[list[int]]]]:
+def parse_dimacs_instance(instance: str) -> Optional[tuple[int, int, Formula]]:
     print("parsing:", instance)
 
     variable_num: int = 0
     clause_num: int = 0
-    clauses = []
+    formula = Formula([])
 
     input_file = open(instance, "r")
     if not input_file:
         return None
 
-    curr_clause = []
     for line in input_file:
         l = line.strip()
         if not l:
@@ -35,10 +34,17 @@ def parse_dimacs_instance(instance: str) -> Optional[tuple[int, int, list[list[i
                         break
                     case _:
                         parsed = [x for x in l.split(" ") if x != ""]
-                        end = int(parsed[-1])
-                        curr_clause.extend([int(x) for x in parsed])
-                        if end == 0:
-                            clauses.append(curr_clause[:-1])
-                            curr_clause = []
+                        formula.clauses.append(
+                            Clause(
+                                [
+                                    (
+                                        Literal(abs(int(x)), False)
+                                        if int(x) > 0
+                                        else Literal(abs(int(x)), True)
+                                    )
+                                    for x in parsed[:-1]
+                                ]
+                            )
+                        )
 
-    return variable_num, clause_num, clauses
+    return variable_num, clause_num, formula

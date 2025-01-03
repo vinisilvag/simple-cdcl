@@ -18,8 +18,6 @@ def main():
 
     print("instance parsed")
 
-    print(parsed_instance)
-
     variable_num, clause_num, clauses = parsed_instance
     cdcl = CDCL(variable_num, clause_num, clauses)
 
