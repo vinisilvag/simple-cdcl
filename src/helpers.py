@@ -20,4 +20,5 @@ class Formula:
 @dataclass
 class Assignment:
     decision_level: int
-    literal: Literal
+    literal: int
+    value: bool

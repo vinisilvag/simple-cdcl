@@ -18,8 +18,8 @@ def main():
 
     print("instance parsed")
 
-    variable_num, clause_num, clauses = parsed_instance
-    cdcl = CDCL(variable_num, clause_num, clauses)
+    variable_num, clause_num, formula = parsed_instance
+    cdcl = CDCL(variable_num, clause_num, formula)
 
     start = timer()
     model = cdcl.solve()

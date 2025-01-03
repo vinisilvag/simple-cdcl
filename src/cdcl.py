@@ -1,67 +1,107 @@
+import random
+import sys
+from typing import Optional
+
+from helpers import Assignment, Formula
+
+
 class CDCL:
-    def __init__(self, variable_num, clause_num, clauses):
-        self.variable_num = variable_num
-        self.clause_num = clause_num
-        self.clauses = clauses
+    def __init__(self, variable_num, clause_num, formula):
+        self.variable_num: int = variable_num
+        self.clause_num: int = clause_num
+        self.formula: Formula = formula
 
-    # check sat with early return
-    def check_sat(self, model):
-        for clause in self.clauses:
-            count = 0
-            for literal in clause:
-                index = literal - 1 if literal > 0 else literal + 1
-                if literal > 0 and model[index] == True:
-                    count += 1
-                elif literal < 0 and model[index] == False:
-                    count += 1
-            if count == 0:
-                return False
-        return True
+        self.two_pointers = [
+            [0, 1] if len(clause.literals) >= 2 else None for clause in formula.clauses
+        ]
 
-    # check conflict with early return
-    def check_conflict(self, model):
-        for clause in self.clauses:
-            count = 0
-            for literal in clause:
-                index = literal - 1 if literal > 0 else literal + 1
-                if literal > 0 and model[index] == False:
-                    count += 1
-                elif literal < 0 and model[index] == True:
-                    count += 1
-            if count == len(clause):
-                return True
-        return False
+    # can be improved I guess
+    def purify(self, assignment: list[Assignment]):
+        for variable in list(range(1, self.variable_num + 1)):
+            occurs_pos = False
+            occurs_neg = False
 
-    # naive variable selection
-    def choose(self, model):
-        for i, _ in enumerate(model):
-            if model[i] == None:
-                return i
+            for clause in self.formula.clauses:
+                for lit in clause.literals:
+                    if lit.lit == variable:
+                        if lit.is_negated:
+                            occurs_neg = True
+                        else:
+                            occurs_pos = True
+            if occurs_pos and not occurs_neg:
+                assignment.append(Assignment(0, variable, True))
+            elif occurs_neg and not occurs_pos:
+                assignment.append(Assignment(0, variable, False))
+
+    def all_variables_assigned(self, assignment: list[Assignment]) -> bool:
+        assigned = [x.literal for x in assignment]
+        to_assign = list(set(list(range(1, self.variable_num + 1))) - set(assigned))
+        return len(to_assign) == 0
+
+    # two pointers for this
+    def can_propagate(self, assignment: list[Assignment]) -> Optional[int]:
+        for pointers in self.two_pointers:
+            if not pointers:
+                continue
+
+            # check if first pointer points to an falsified assignment
+            # and second not or vice-versa
+
+            # if yes, can propagate this clause
+
         return None
 
-    def assign(self, model, variable, truth_value):
-        copy = model.copy()
-        copy[variable] = truth_value
-        return copy
+    def propagate(self, assignment: list[Assignment]):
+        while True:
+            clause = self.can_propagate(assignment)
+            if not clause:
+                break
+
+            print("propagating clause", clause)
+            # append to assignment
+            # update two_pointers
+
+    # do better variable selection later
+    def choose_variable(self, assignment: list[Assignment]):
+        assigned = [x.literal for x in assignment]
+        to_assign = list(set(list(range(1, self.variable_num + 1))) - set(assigned))
+        return to_assign[0], random.choice([False, True])
+
+    def conflict_analysis(self) -> int:
+        return -1
 
     def solve(self):
-        def solve_rec(model):
+        assignment: list[Assignment] = []
+        decision_level = 0
+
+        # assign variables that appears only positively or negatively in the formula
+        self.purify(assignment)
+
+        status = self.propagate(assignment)
+        # conflict, formula is UNSAT from the beggining
+        if status == 1:
             return None
 
-            if self.check_sat(model):
-                return model
+        while not self.all_variables_assigned(assignment):
+            variable, value = self.choose_variable(assignment)
+            decision_level += 1
+            assignment.append(Assignment(decision_level, variable, value))
 
-            if self.check_conflict(model):
-                return None
+            propagate = self.propagate(assignment)
+            # conflict found, do conflict analysis
+            if propagate == 1:
+                new_decision_level = self.conflict_analysis()
+                if new_decision_level < 0:
+                    return None
 
-            variable = self.choose(model)
-            print("chosen variable: ", variable)
+                #   identify the decision level to backtrack
+                #   if cant (decision level < 0), return None (UNSAT)
+                #   else
+                #       backtrack the assignment,
+                #       decrease the decision level,
+                #       insert the conflict clause after conflict analysis in the clause
+                #       set (next unit propagation will handle the reverse value for
+                #       the variable)
+                pass
 
-            try_true = solve_rec(self.assign(model, variable, True))
-            if try_true:
-                return try_true
-            else:
-                return solve_rec(self.assign(model, variable, False))
-
-        model = [None for _ in range(self.variable_num)]
-        return solve_rec(model)
+        return assignment
