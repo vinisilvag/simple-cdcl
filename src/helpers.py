@@ -22,3 +22,8 @@ class Assignment:
     decision_level: int
     literal: int
     value: bool
+
+
+def print_assignment(assignment: list[Assignment]):
+    for lit in assignment:
+        print(lit.literal if lit.value else -lit.literal, end=" ")

@@ -3,6 +3,7 @@ from parser import parse_dimacs_instance
 from timeit import default_timer as timer
 
 from cdcl import CDCL
+from helpers import print_assignment
 
 
 def main():
@@ -27,7 +28,9 @@ def main():
 
     if model:
         print("s SATISFIABLE")
-        print(model)
+        print("v", end=" ")
+        print_assignment(model)
+        print()
     else:
         print("s UNSATISFIABLE")
 
