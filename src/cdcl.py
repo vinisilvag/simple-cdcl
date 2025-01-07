@@ -19,6 +19,15 @@ class CDCL:
             [0, 1] if len(clause.literals) >= 2 else None for clause in formula.clauses
         ]
 
+    def assign(self, variable: int, value: bool):
+        self.M.append(Assignment(self.decision_level, variable, value))
+        self.assignment[variable] = value
+        self.update_two_pointers(variable, value)
+
+    def unassign(self, remove: int):
+        self.assignment[self.M[remove].literal] = None
+        self.M.pop(remove)
+
     def update_two_pointers(self, variable: int, value: bool):
         print("\natualizando ponteiros")
         for i, pointers in enumerate(self.two_pointers):
@@ -32,8 +41,8 @@ class CDCL:
             print(variable, value)
             print(first_lit, second_lit)
 
-            if first_lit.lit == variable:
-                print("primeiro lit", first_lit.lit, "igual a variable", variable)
+            if first_lit.variable == variable:
+                print("primeiro lit", first_lit.variable, "igual a variable", variable)
                 print("negated?", first_lit.is_negated)
                 print("value?", value)
                 if (not first_lit.is_negated and not value) or (
@@ -41,49 +50,37 @@ class CDCL:
                 ):
                     literals = self.formula.clauses[i].literals
                     for j, literal in enumerate(literals):
-                        if self.assignment[literal.lit] == None and pointers[1] != j:
+                        if (
+                            self.assignment[literal.variable] == None
+                            and pointers[1] != j
+                        ):
                             print("atualizando o primeiro ponteiro pra posicao", j)
-                            self.two_pointers[i][0] = j
+                            pointers[0] = j
                             break
-            if second_lit.lit == variable:
-                print("segundo lit", second_lit.lit, "igual a variable", variable)
+
+            if second_lit.variable == variable:
+                print("segundo lit", second_lit.variable, "igual a variable", variable)
                 if (not second_lit.is_negated and not value) or (
                     second_lit.is_negated and value
                 ):
                     literals = self.formula.clauses[i].literals
                     for j, literal in enumerate(literals):
-                        if self.assignment[literal.lit] == None and pointers[0] != j:
+                        if (
+                            self.assignment[literal.variable] == None
+                            and pointers[0] != j
+                        ):
                             print("atualizando o segundo ponteiro pra posicao", j)
-                            self.two_pointers[i][1] = j
+                            pointers[1] = j
                             break
 
-    # can be improved I guess
-    def purify(self):
-        print("\nclausulas com apenas um literal...")
-        # purify clauses that has just one literal
-        for i, clause in enumerate(self.formula.clauses):
-            if len(clause.literals) == 1:
-                print("clausula", i, "tem apenas um literal")
-                print("assinalando ele...")
-                literal = clause.literals[0]
-                if literal.is_negated:
-                    self.M.append(Assignment(0, literal.lit, False))
-                    self.assignment[literal.lit] = False
-                    self.update_two_pointers(literal.lit, False)
-                else:
-                    self.M.append(Assignment(0, literal.lit, True))
-                    self.assignment[literal.lit] = True
-                    self.update_two_pointers(literal.lit, True)
-
+    def solve_only_neg_or_pos_literals(self):
         print("\nliterais apenas positivos ou negativos na formula")
-        # purify variables that appear only positively or negatively
         for variable in list(range(1, self.variable_num + 1)):
             occurs_pos = False
             occurs_neg = False
-
             for clause in self.formula.clauses:
                 for lit in clause.literals:
-                    if lit.lit == variable:
+                    if lit.variable == variable:
                         if lit.is_negated:
                             occurs_neg = True
                         else:
@@ -91,20 +88,29 @@ class CDCL:
 
             if occurs_pos and not occurs_neg:
                 print(variable, "aparece apenas positivamente")
-                self.M.append(Assignment(0, variable, True))
-                self.assignment[variable] = True
-                self.update_two_pointers(variable, True)
+                if self.assignment[variable] == None:
+                    self.assign(variable, True)
             elif occurs_neg and not occurs_pos:
                 print(variable, "aparece apenas negativamente")
-                self.M.append(Assignment(0, variable, False))
-                self.assignment[variable] = False
-                self.update_two_pointers(variable, False)
+                if self.assignment[variable] == None:
+                    self.assign(variable, False)
 
-    # check with assignment instead of M?
+    def solve_unit_clauses(self):
+        print("\nclausulas com apenas um literal...")
+        for i, clause in enumerate(self.formula.clauses):
+            if len(clause.literals) == 1:
+                print("clausula", i, "tem apenas um literal")
+                print("assinalando ele...")
+                literal = clause.literals[0]
+                if literal.is_negated:
+                    if self.assignment[literal.variable] == None:
+                        self.assign(literal.variable, False)
+                else:
+                    if self.assignment[literal.variable] == None:
+                        self.assign(literal.variable, True)
+
     def all_variables_assigned(self) -> bool:
-        assigned = [x.literal for x in self.M]
-        to_assign = list(set(list(range(1, self.variable_num + 1))) - set(assigned))
-        return len(to_assign) == 0
+        return len(self.M) == self.variable_num
 
     def can_propagate(self) -> Optional[tuple[int, tuple[Literal, bool]]]:
         print("\nclause and pointers")
@@ -113,87 +119,140 @@ class CDCL:
             if not pointers:
                 continue
 
-            # check if first pointer points to an falsified assignment
-            # and second not or vice-versa
             first_lit = self.formula.clauses[i].literals[pointers[0]]
             second_lit = self.formula.clauses[i].literals[pointers[1]]
 
+            print(
+                "first lit", first_lit.is_negated, self.assignment[first_lit.variable]
+            )
+            print(
+                "second lit",
+                second_lit.is_negated,
+                self.assignment[second_lit.variable],
+            )
+
             # clauses are satisfied
-            if not first_lit.is_negated and self.assignment[first_lit.lit] == True:
+            if not first_lit.is_negated and self.assignment[first_lit.variable] == True:
                 continue
-            if first_lit.is_negated and self.assignment[first_lit.lit] == False:
+            if first_lit.is_negated and self.assignment[first_lit.variable] == False:
                 continue
-            if not second_lit.is_negated and self.assignment[second_lit.lit] == True:
+
+            if (
+                not second_lit.is_negated
+                and self.assignment[second_lit.variable] == True
+            ):
                 continue
-            if second_lit.is_negated and self.assignment[second_lit.lit] == False:
+            if second_lit.is_negated and self.assignment[second_lit.variable] == False:
                 continue
 
             # clauses can be propagated
-            if not first_lit.is_negated and self.assignment[first_lit.lit] == False:
-                if self.assignment[second_lit.lit] == None:
+            if (
+                not first_lit.is_negated
+                and self.assignment[first_lit.variable] == False
+            ):
+                if self.assignment[second_lit.variable] == None:
                     return i, (second_lit, not second_lit.is_negated)
-            if first_lit.is_negated and self.assignment[first_lit.lit] == True:
-                if self.assignment[second_lit.lit] == None:
+
+            if first_lit.is_negated and self.assignment[first_lit.variable] == True:
+                if self.assignment[second_lit.variable] == None:
                     return i, (second_lit, not second_lit.is_negated)
-            if not second_lit.is_negated and self.assignment[second_lit.lit] == False:
-                if self.assignment[first_lit.lit] == None:
+
+            if (
+                not second_lit.is_negated
+                and self.assignment[second_lit.variable] == False
+            ):
+                if self.assignment[first_lit.variable] == None:
                     return i, (first_lit, not first_lit.is_negated)
-            if second_lit.is_negated and self.assignment[second_lit.lit] == True:
-                if self.assignment[first_lit.lit] == None:
+
+            if second_lit.is_negated and self.assignment[second_lit.variable] == True:
+                if self.assignment[first_lit.variable] == None:
                     return i, (first_lit, not first_lit.is_negated)
 
         return None
 
-    def propagate(self):
-        while True:
+    def unit_propagation(self) -> tuple[int, Optional[int]]:
+        has_unit_clause = True
+        while has_unit_clause:
+            has_unit_clause = False
             clause = self.can_propagate()
             if not clause:
                 print("\ncant propagate more")
-                break
+                continue
 
-            _, literal = clause
+            clause_index, literal = clause
             literal, value = literal
 
-            print("\npropagating clause", clause)
-            self.M.append(Assignment(self.decision_level, literal.lit, value))
-            self.assignment[literal.lit] = value
-            self.update_two_pointers(literal.lit, value)
+            if (
+                self.assignment[literal.variable] != None
+                and self.assignment[literal.variable] != value
+            ):
+                print("\nconflict found")
+                print(
+                    literal.variable,
+                    "vale",
+                    self.assignment[literal.variable],
+                    "e para satisfazer a clausula",
+                    clause_index,
+                    "deve passar a valer",
+                    value,
+                )
+                return 1, clause_index
 
-    # do better variable selection later
-    # check with assignment instead of M?
+            print("\npropagating clause", clause_index)
+            print("assinalando", value, "para", literal.variable)
+            self.assign(literal.variable, value)
+
+        return 0, None
+
     def choose_variable(self):
-        assigned = [x.literal for x in self.M]
-        to_assign = list(set(list(range(1, self.variable_num + 1))) - set(assigned))
-        return to_assign[0], random.choice([False, True])
+        to_assign = next(literal for literal in self.assignment if literal is not None)
+        return to_assign, random.choice([False, True])
+
+    def backjump(self, b: int):
+        to_remove = []
+        for i, literal in enumerate(self.M):
+            if literal.decision_level > b:
+                to_remove.append(i)
+
+        for rem in to_remove:
+            self.unassign(rem)
 
     def conflict_analysis(self) -> int:
         return -1
 
     def solve(self):
-        # assign variables that appears only positively or negatively in the formula
-        self.purify()
+        # purify step
+        self.solve_only_neg_or_pos_literals()
+        self.solve_unit_clauses()
 
         print("\nafter purify")
         print(self.M)
 
+        print("\n-------------------------------------------------")
+
         print("\npropagating after purify")
-        status = self.propagate()
+        status, _ = self.unit_propagation()
         # conflict, formula is UNSAT from the beggining
         if status == 1:
             return None
+
+        print("\nafter propagating")
+        print(self.M)
+
+        print("\n-------------------------------------------------")
+
+        return None
 
         print("\nstarting propagation and deciding or end")
         while not self.all_variables_assigned():
             variable, value = self.choose_variable()
             print("\ndeciding:", variable, value)
             self.decision_level += 1
-            self.M.append(Assignment(self.decision_level, variable, value))
-            self.assignment[variable] = value
-            self.update_two_pointers(variable, value)
+            self.assign(variable, value)
 
-            propagate = self.propagate()
+            status, clause_index = self.unit_propagation()
             # conflict found, do conflict analysis
-            if propagate == 1:
+            if status == 1:
                 new_decision_level = self.conflict_analysis()
                 if new_decision_level < 0:
                     return None

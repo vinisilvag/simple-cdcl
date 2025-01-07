@@ -1,20 +1,32 @@
 from dataclasses import dataclass
 
 
-@dataclass
+@dataclass(frozen=True)
 class Literal:
-    lit: int
+    variable: int
     is_negated: bool
+
+    def __repr__(self):
+        if self.is_negated:
+            return "-" + str(self.variable)
+        else:
+            return str(self.variable)
 
 
 @dataclass
 class Clause:
     literals: list[Literal]
 
+    def __len__(self):
+        return len(self.literals)
+
 
 @dataclass
 class Formula:
     clauses: list[Clause]
+
+    def __len__(self):
+        return len(self.clauses)
 
 
 @dataclass
