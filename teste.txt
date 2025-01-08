@@ -1,0 +1,392 @@
+parsing: examples/other/zebra.cnf
+instance parsed
+
+clausulas com apenas um literal...
+assinalando 51 como True por causa de cNone
+[(51 @ 0, None)]
+assinalando 42 como True por causa de cNone
+[(51 @ 0, None), (42 @ 0, None)]
+assinalando 122 como True por causa de cNone
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None)]
+assinalando 11 como True por causa de cNone
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None)]
+assinalando 82 como True por causa de cNone
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None)]
+assinalando 65 como False por causa de cNone
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None)]
+to unit propagate
+[51, 42, 122, 11, 82, -65]
+
+after purify
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None)]
+
+-------------------------------------------------
+
+propagating after purify
+to unit propagate
+[51, 42, 122, 11, 82, -65]
+
+propagando -65 vamos alterar os ponteiros das clausulas que assistem 65
+clausulas [85] assistindo 65
+
+clausula 85
+literais dela: [64, 65]
+literal da iteracao atual 64
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 65
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [64, 65]
+primeiro ponteiro era 65 e o segundo eh 64
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 64 como True por causa de c85
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85)]
+
+propagando 64 vamos alterar os ponteiros das clausulas que assistem -64
+clausulas [88, 91, 93, 95, 811, 814, 817, 818, 1038, 1039, 1040, 1041] assistindo -64
+
+clausula 88
+literais dela: [-61, -64]
+literal da iteracao atual -61
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -64
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-61, -64]
+primeiro ponteiro era -64 e o segundo eh -61
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 61 como False por causa de c88
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88)]
+
+clausula 91
+literais dela: [-62, -64]
+literal da iteracao atual -62
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -64
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-62, -64]
+primeiro ponteiro era -64 e o segundo eh -62
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 62 como False por causa de c91
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88), (-62 @ 0, c91)]
+
+clausula 93
+literais dela: [-63, -64]
+literal da iteracao atual -63
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -64
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-63, -64]
+primeiro ponteiro era -64 e o segundo eh -63
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 63 como False por causa de c93
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88), (-62 @ 0, c91), (-63 @ 0, c93)]
+
+clausula 95
+literais dela: [-64, -65]
+literal da iteracao atual -64
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -65
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-64, -65]
+primeiro ponteiro era -64 e o segundo eh -65
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 811
+literais dela: [-54, -64]
+literal da iteracao atual -54
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -64
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-54, -64]
+primeiro ponteiro era -64 e o segundo eh -54
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 54 como False por causa de c811
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88), (-62 @ 0, c91), (-63 @ 0, c93), (-54 @ 0, c811)]
+
+clausula 814
+literais dela: [-59, -64]
+literal da iteracao atual -59
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -64
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-59, -64]
+primeiro ponteiro era -64 e o segundo eh -59
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 59 como False por causa de c814
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88), (-62 @ 0, c91), (-63 @ 0, c93), (-54 @ 0, c811), (-59 @ 0, c814)]
+
+clausula 817
+literais dela: [-64, -69]
+literal da iteracao atual -64
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -69
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-64, -69]
+primeiro ponteiro era -64 e o segundo eh -69
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 69 como False por causa de c817
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88), (-62 @ 0, c91), (-63 @ 0, c93), (-54 @ 0, c811), (-59 @ 0, c814), (-69 @ 0, c817)]
+
+clausula 818
+literais dela: [-64, -74]
+literal da iteracao atual -64
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -74
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-64, -74]
+primeiro ponteiro era -64 e o segundo eh -74
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 74 como False por causa de c818
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88), (-62 @ 0, c91), (-63 @ 0, c93), (-54 @ 0, c811), (-59 @ 0, c814), (-69 @ 0, c817), (-74 @ 0, c818)]
+
+clausula 1038
+literais dela: [-64, -78]
+literal da iteracao atual -64
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -78
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-64, -78]
+primeiro ponteiro era -64 e o segundo eh -78
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 78 como False por causa de c1038
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88), (-62 @ 0, c91), (-63 @ 0, c93), (-54 @ 0, c811), (-59 @ 0, c814), (-69 @ 0, c817), (-74 @ 0, c818), (-78 @ 0, c1038)]
+
+clausula 1039
+literais dela: [-64, -83]
+literal da iteracao atual -64
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -83
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-64, -83]
+primeiro ponteiro era -64 e o segundo eh -83
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 83 como False por causa de c1039
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88), (-62 @ 0, c91), (-63 @ 0, c93), (-54 @ 0, c811), (-59 @ 0, c814), (-69 @ 0, c817), (-74 @ 0, c818), (-78 @ 0, c1038), (-83 @ 0, c1039)]
+
+clausula 1040
+literais dela: [-64, -93]
+literal da iteracao atual -64
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -93
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-64, -93]
+primeiro ponteiro era -64 e o segundo eh -93
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 93 como False por causa de c1040
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88), (-62 @ 0, c91), (-63 @ 0, c93), (-54 @ 0, c811), (-59 @ 0, c814), (-69 @ 0, c817), (-74 @ 0, c818), (-78 @ 0, c1038), (-83 @ 0, c1039), (-93 @ 0, c1040)]
+
+clausula 1041
+literais dela: [-64, -98]
+literal da iteracao atual -64
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -98
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-64, -98]
+primeiro ponteiro era -64 e o segundo eh -98
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 98 como False por causa de c1041
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88), (-62 @ 0, c91), (-63 @ 0, c93), (-54 @ 0, c811), (-59 @ 0, c814), (-69 @ 0, c817), (-74 @ 0, c818), (-78 @ 0, c1038), (-83 @ 0, c1039), (-93 @ 0, c1040), (-98 @ 0, c1041)]
+
+propagando -98 vamos alterar os ponteiros das clausulas que assistem 98
+clausulas [] assistindo 98
+
+propagando -93 vamos alterar os ponteiros das clausulas que assistem 93
+clausulas [] assistindo 93
+
+propagando -83 vamos alterar os ponteiros das clausulas que assistem 83
+clausulas [] assistindo 83
+
+propagando -78 vamos alterar os ponteiros das clausulas que assistem 78
+clausulas [] assistindo 78
+
+propagando -74 vamos alterar os ponteiros das clausulas que assistem 74
+clausulas [109] assistindo 74
+
+clausula 109
+literais dela: [74, 75]
+literal da iteracao atual 74
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 75
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [74, 75]
+primeiro ponteiro era 74 e o segundo eh 75
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 75 como True por causa de c109
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88), (-62 @ 0, c91), (-63 @ 0, c93), (-54 @ 0, c811), (-59 @ 0, c814), (-69 @ 0, c817), (-74 @ 0, c818), (-78 @ 0, c1038), (-83 @ 0, c1039), (-93 @ 0, c1040), (-98 @ 0, c1041), (75 @ 0, c109)]
+
+propagando 75 vamos alterar os ponteiros das clausulas que assistem -75
+clausulas [113, 116, 118, 119, 823, 826, 828, 829, 989] assistindo -75
+
+clausula 113
+literais dela: [-71, -75]
+literal da iteracao atual -71
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -75
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-71, -75]
+primeiro ponteiro era -75 e o segundo eh -71
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 71 como False por causa de c113
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88), (-62 @ 0, c91), (-63 @ 0, c93), (-54 @ 0, c811), (-59 @ 0, c814), (-69 @ 0, c817), (-74 @ 0, c818), (-78 @ 0, c1038), (-83 @ 0, c1039), (-93 @ 0, c1040), (-98 @ 0, c1041), (75 @ 0, c109), (-71 @ 0, c113)]
+
+clausula 116
+literais dela: [-72, -75]
+literal da iteracao atual -72
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -75
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-72, -75]
+primeiro ponteiro era -75 e o segundo eh -72
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 72 como False por causa de c116
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88), (-62 @ 0, c91), (-63 @ 0, c93), (-54 @ 0, c811), (-59 @ 0, c814), (-69 @ 0, c817), (-74 @ 0, c818), (-78 @ 0, c1038), (-83 @ 0, c1039), (-93 @ 0, c1040), (-98 @ 0, c1041), (75 @ 0, c109), (-71 @ 0, c113), (-72 @ 0, c116)]
+
+clausula 118
+literais dela: [-73, -75]
+literal da iteracao atual -73
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -75
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-73, -75]
+primeiro ponteiro era -75 e o segundo eh -73
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 73 como False por causa de c118
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88), (-62 @ 0, c91), (-63 @ 0, c93), (-54 @ 0, c811), (-59 @ 0, c814), (-69 @ 0, c817), (-74 @ 0, c818), (-78 @ 0, c1038), (-83 @ 0, c1039), (-93 @ 0, c1040), (-98 @ 0, c1041), (75 @ 0, c109), (-71 @ 0, c113), (-72 @ 0, c116), (-73 @ 0, c118)]
+
+clausula 119
+literais dela: [-74, -75]
+literal da iteracao atual -74
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -75
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-74, -75]
+primeiro ponteiro era -75 e o segundo eh -74
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 823
+literais dela: [-55, -75]
+literal da iteracao atual -55
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -75
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-55, -75]
+primeiro ponteiro era -75 e o segundo eh -55
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 55 como False por causa de c823
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88), (-62 @ 0, c91), (-63 @ 0, c93), (-54 @ 0, c811), (-59 @ 0, c814), (-69 @ 0, c817), (-74 @ 0, c818), (-78 @ 0, c1038), (-83 @ 0, c1039), (-93 @ 0, c1040), (-98 @ 0, c1041), (75 @ 0, c109), (-71 @ 0, c113), (-72 @ 0, c116), (-73 @ 0, c118), (-55 @ 0, c823)]
+
+clausula 826
+literais dela: [-60, -75]
+literal da iteracao atual -60
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -75
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-60, -75]
+primeiro ponteiro era -75 e o segundo eh -60
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 60 como False por causa de c826
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88), (-62 @ 0, c91), (-63 @ 0, c93), (-54 @ 0, c811), (-59 @ 0, c814), (-69 @ 0, c817), (-74 @ 0, c818), (-78 @ 0, c1038), (-83 @ 0, c1039), (-93 @ 0, c1040), (-98 @ 0, c1041), (75 @ 0, c109), (-71 @ 0, c113), (-72 @ 0, c116), (-73 @ 0, c118), (-55 @ 0, c823), (-60 @ 0, c826)]
+
+clausula 828
+literais dela: [-65, -75]
+literal da iteracao atual -65
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -75
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-65, -75]
+primeiro ponteiro era -75 e o segundo eh -65
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 829
+literais dela: [-70, -75]
+literal da iteracao atual -70
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -75
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-70, -75]
+primeiro ponteiro era -75 e o segundo eh -70
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 70 como False por causa de c829
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88), (-62 @ 0, c91), (-63 @ 0, c93), (-54 @ 0, c811), (-59 @ 0, c814), (-69 @ 0, c817), (-74 @ 0, c818), (-78 @ 0, c1038), (-83 @ 0, c1039), (-93 @ 0, c1040), (-98 @ 0, c1041), (75 @ 0, c109), (-71 @ 0, c113), (-72 @ 0, c116), (-73 @ 0, c118), (-55 @ 0, c823), (-60 @ 0, c826), (-70 @ 0, c829)]
+
+clausula 989
+literais dela: [-75, 154]
+literal da iteracao atual -75
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 154
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-75, 154]
+primeiro ponteiro era -75 e o segundo eh 154
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 154 como True por causa de c989
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88), (-62 @ 0, c91), (-63 @ 0, c93), (-54 @ 0, c811), (-59 @ 0, c814), (-69 @ 0, c817), (-74 @ 0, c818), (-78 @ 0, c1038), (-83 @ 0, c1039), (-93 @ 0, c1040), (-98 @ 0, c1041), (75 @ 0, c109), (-71 @ 0, c113), (-72 @ 0, c116), (-73 @ 0, c118), (-55 @ 0, c823), (-60 @ 0, c826), (-70 @ 0, c829), (154 @ 0, c989)]
+
+propagando 154 vamos alterar os ponteiros das clausulas que assistem -154
+clausulas [] assistindo -154
+
+propagando -70 vamos alterar os ponteiros das clausulas que assistem 70
+clausulas [97] assistindo 70
+
+clausula 97
+literais dela: [69, 70]
+literal da iteracao atual 69
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 70
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [69, 70]
+primeiro ponteiro era 70 e o segundo eh 69
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh False, conflito na clausula 97
+[(51 @ 0, None), (42 @ 0, None), (122 @ 0, None), (11 @ 0, None), (82 @ 0, None), (-65 @ 0, None), (64 @ 0, c85), (-61 @ 0, c88), (-62 @ 0, c91), (-63 @ 0, c93), (-54 @ 0, c811), (-59 @ 0, c814), (-69 @ 0, c817), (-74 @ 0, c818), (-78 @ 0, c1038), (-83 @ 0, c1039), (-93 @ 0, c1040), (-98 @ 0, c1041), (75 @ 0, c109), (-71 @ 0, c113), (-72 @ 0, c116), (-73 @ 0, c118), (-55 @ 0, c823), (-60 @ 0, c826), (-70 @ 0, c829), (154 @ 0, c989)]
+s UNSATISFIABLE
+1.5349030145443976 ms

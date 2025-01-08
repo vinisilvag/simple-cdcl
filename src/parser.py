@@ -30,8 +30,6 @@ def parse_dimacs_instance(instance: str) -> Optional[tuple[int, int, Formula]]:
                 match l:
                     case "0":
                         break
-                    case "%":
-                        break
                     case _:
                         parsed = [x for x in l.split(" ") if x != ""]
                         formula.clauses.append(

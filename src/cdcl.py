@@ -219,6 +219,11 @@ class CDCL:
         return 0, None
 
     def choose_literal(self):
+        # dumb choose
+        for i in range(1, self.variable_num + 1):
+            if self.assignment[i] == None:
+                return Literal(i, False), True
+
         # get the list of candidates (literals not assigned)
         # and insert in the list their negation too
         candidates = []
@@ -253,6 +258,7 @@ class CDCL:
                 self.watched_literals[literal].append(clause_index)
 
     def backjump(self, new_decision_level: int):
+        print("fazendo o backjump")
         to_remove = [
             assignment
             for assignment in self.M
@@ -263,7 +269,12 @@ class CDCL:
 
         self.decision_level = new_decision_level
 
-    def conflict_analysis(self, clause: int) -> tuple[int, Clause]:
+        return to_remove[0]
+
+    def conflict_analysis(self, clause: int) -> tuple[int, Optional[Clause]]:
+        # no conflict_analysis
+        return self.decision_level - 1, None
+
         literals = [
             assignment
             for assignment in self.M
@@ -311,7 +322,7 @@ class CDCL:
     def solve(self):
         # purify step
         to_propagate = []
-        to_propagate.extend(self.solve_only_negative_or_positive_literals())
+        # to_propagate.extend(self.solve_only_negative_or_positive_literals())
         literals_from_unit_clauses = self.solve_unit_clauses()
 
         # two conflitant unit clauses
@@ -332,6 +343,7 @@ class CDCL:
         status, _ = self.unit_propagation(to_propagate)
         # conflict, formula is UNSAT
         if status == 1:
+            print(self.M)
             return None
 
         print("\nafter propagating")
@@ -373,18 +385,22 @@ class CDCL:
                     print(f"novo decision level {new_decision_level}")
                     print(f"clausula de conflito aprendida {conflict_clause}")
 
-                    self.learn(conflict_clause)
-                    self.backjump(new_decision_level)
-                    for literal in conflict_clause.literals:
-                        if self.assignment[literal.variable] == None:
-                            self.assign(
-                                literal.variable,
-                                not literal.is_negated,
-                                self.formula.clauses.index(conflict_clause),
-                            )
-                            to_propagate = []
-                            to_propagate.append(literal)
-                            break
+                    # if conflict_clause != None:
+                    #     self.learn(conflict_clause)
+                    to_reassign = self.backjump(new_decision_level)
+                    self.assign(to_reassign.literal, not to_reassign.value, None)
+                    to_propagate = []
+                    to_propagate.append(Literal(to_reassign.literal, to_reassign.value))
+                    # for literal in conflict_clause.literals:
+                    #     if self.assignment[literal.variable] == None:
+                    #         self.assign(
+                    #             literal.variable,
+                    #             not literal.is_negated,
+                    #             self.formula.clauses.index(conflict_clause),
+                    #         )
+                    #         to_propagate = []
+                    #         to_propagate.append(literal)
+                    #         break
                 else:
                     # propagated, deciding new variable in the next iteration
                     print("\nM depois de propagar")
