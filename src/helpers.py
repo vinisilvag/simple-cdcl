@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Optional
 
 
 @dataclass(frozen=True)
@@ -34,6 +35,15 @@ class Assignment:
     decision_level: int
     literal: int
     value: bool
+    antecedent: Optional[int]
+
+    def __repr__(self):
+        literal = "-" + str(self.literal) if self.value == False else str(self.literal)
+        return "({} @ {}, {})".format(
+            literal,
+            self.decision_level,
+            None if not self.antecedent else "c" + str(self.antecedent),
+        )
 
 
 def print_assignment(assignment: list[Assignment]):
