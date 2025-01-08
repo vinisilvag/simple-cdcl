@@ -12,6 +12,9 @@ class Literal:
         else:
             return str(self.variable)
 
+    def negation(self):
+        return Literal(self.variable, not self.is_negated)
+
 
 @dataclass
 class Clause:
@@ -24,9 +27,6 @@ class Clause:
 @dataclass
 class Formula:
     clauses: list[Clause]
-
-    def __len__(self):
-        return len(self.clauses)
 
 
 @dataclass
