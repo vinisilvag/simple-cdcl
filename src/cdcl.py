@@ -173,8 +173,9 @@ class CDCL:
         candidates = []
         for i in range(1, self.variable_num + 1):
             if self.assignment[i] == None:
-                candidates.append(Literal(i, False))
-                candidates.append(Literal(i, True))
+                literal = Literal(i, False)
+                candidates.append(literal)
+                candidates.append(literal.negation())
 
         candidates.sort(key=lambda i: self.activity[i], reverse=True)
 
@@ -182,12 +183,18 @@ class CDCL:
         return candidate, not candidate.is_negated
 
     def conflict_analysis(self, clause: int) -> int:
+        new_decision_level = -1
+
+        # update activity for literals in the conflict clause
         for literal in self.formula.clauses[clause].literals:
             self.activity[literal] += self.increment
 
+        # handle conflict analysis
+
+        # apply decay
         self.apply_decay()
 
-        return -1
+        return new_decision_level
 
     def solve(self):
         # purify step
