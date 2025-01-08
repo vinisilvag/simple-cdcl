@@ -19,7 +19,7 @@ class CDCL:
         # current decision level
         self.decision_level = 0
 
-        # initialize the 2 watched literals data structure
+        # initialize the 2-watched literals data structure
         self.watched_literals: dict[Literal, list[int]] = defaultdict(list)
         for clause_index, clause in enumerate(formula.clauses):
             if len(clause) < 2:
@@ -47,6 +47,7 @@ class CDCL:
         print(f"assinalando {variable} como {value} por causa de c{antecedent}")
         self.M.append(Assignment(self.decision_level, variable, value, antecedent))
         self.assignment[variable] = value
+        print(self.M)
 
     def unassign(self, literal: int):
         print(f"removendo {literal} dos assinalamentos")
@@ -100,20 +101,15 @@ class CDCL:
         satisfied = 0
 
         for clause in self.formula.clauses:
-            count = 0
             for literal in clause.literals:
                 assignment = self.assignment[literal.variable]
-                if assignment != None:
-                    if (assignment and not literal.is_negated) or (
-                        not assignment and literal.is_negated
-                    ):
-                        satisfied += 1
-                        count += 1
-                        break
+                if assignment != None and (
+                    (assignment and not literal.is_negated)
+                    or (not assignment and literal.is_negated)
+                ):
+                    satisfied += 1
+                    break
 
-            if count == 0:
-                print(clause, self.formula.clauses.index(clause))
-                print(self.decision_level)
         print(
             f"{satisfied} clausulas de {len(self.formula.clauses)} são satisfeitas, continuando..."
         )
@@ -135,6 +131,8 @@ class CDCL:
 
             for clause in clauses:
                 literals = self.formula.clauses[clause].literals
+                print(f"\nclausula {clause}")
+                print(f"literais dela: {literals}")
                 watched_literal_changed = False
                 for lit in literals:
                     print(f"literal da iteracao atual {lit}")
@@ -233,7 +231,7 @@ class CDCL:
         # sort by the activity map value
         candidates.sort(key=lambda i: self.activity[i], reverse=True)
 
-        print(f"lista de possiveis candidatos {candidates}")
+        print(f"\nlista de possiveis candidatos {candidates}")
 
         # get the candidate with highest activity
         candidate = candidates[0]
@@ -290,12 +288,17 @@ class CDCL:
         self.apply_decay()
 
         decision_levels = sorted(
-            [
-                assignment.decision_level
-                for assignment in self.M
-                if Literal(assignment.literal, assignment.value)
-                in learned_clause.literals
-            ],
+            # list(dict.fromkeys(...)) to remove duplicates
+            list(
+                dict.fromkeys(
+                    [
+                        assignment.decision_level
+                        for assignment in self.M
+                        if Literal(assignment.literal, assignment.value)
+                        in learned_clause.literals
+                    ]
+                )
+            ),
             reverse=True,
         )
         print(f"lista de decision levels {decision_levels}")
@@ -357,6 +360,7 @@ class CDCL:
                     if self.decision_level == 0:
                         # conflict and current decision level is 0
                         # return UNSAT
+                        print("conflito no decision level 0, return UNSAT")
                         return None
 
                     print("\nconflito na clausula c{}".format(clause_index))

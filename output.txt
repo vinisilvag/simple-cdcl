@@ -1,0 +1,3600 @@
+parsing: examples/sat/uf20-91/uf20-04.cnf
+instance parsed
+
+literais apenas positivos ou negativos na formula
+to unit propagate
+[]
+
+clausulas com apenas um literal...
+to unit propagate
+[]
+
+after purify
+[]
+
+-------------------------------------------------
+
+propagating after purify
+to unit propagate
+[]
+
+after propagating
+[]
+
+-------------------------------------------------
+
+starting the loop
+0 clausulas de 91 são satisfeitas, continuando...
+
+-------------------------------------------------
+M antes de decidir um novo literal
+[]
+
+lista de possiveis candidatos [10, -3, -12, -1, 17, 9, -15, 16, -2, -7, 8, -8, -17, 3, -4, -5, -6, 7, 12, 13, -13, -14, 18, -9, 11, -11, 14, -19, 1, 2, 5, -10, 19, 20, 6, 15, 4, -16, -20, -18]
+
+decidindo: 10 vale True
+assinalando 10 como True por causa de cNone
+[(10 @ 1, None)]
+decision level do novo literal 1
+
+to unit propagate
+[10]
+
+propagando 10 vamos alterar os ponteiros das clausulas que assistem -10
+clausulas [30, 57, 79] assistindo -10
+
+clausula 30
+literais dela: [-10, 12, -2]
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -2
+reassistindo o literal nao assinalado -2
+
+clausula 57
+literais dela: [-12, -10, 18]
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 18
+reassistindo o literal nao assinalado 18
+
+clausula 79
+literais dela: [-10, 15, -9]
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+reassistindo o literal nao assinalado -9
+
+M depois de propagar
+[(10 @ 1, None)]
+15 clausulas de 91 são satisfeitas, continuando...
+
+-------------------------------------------------
+M antes de decidir um novo literal
+[(10 @ 1, None)]
+
+lista de possiveis candidatos [-3, -12, -1, 17, 9, -15, 16, -2, -7, 8, -8, -17, 3, -4, -5, -6, 7, 12, 13, -13, -14, 18, -9, 11, -11, 14, -19, 1, 2, 5, 19, 20, 6, 15, 4, -16, -20, -18]
+
+decidindo: 3 vale False
+assinalando 3 como False por causa de cNone
+[(10 @ 1, None), (-3 @ 2, None)]
+decision level do novo literal 2
+
+to unit propagate
+[-3]
+
+propagando -3 vamos alterar os ponteiros das clausulas que assistem 3
+clausulas [32, 34, 42, 86] assistindo 3
+
+clausula 32
+literais dela: [3, -15, -2]
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -2
+reassistindo o literal nao assinalado -2
+
+clausula 34
+literais dela: [3, 10, 9]
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+reassistindo o literal nao assinalado 9
+
+clausula 42
+literais dela: [3, 4, -15]
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -15
+reassistindo o literal nao assinalado -15
+
+clausula 86
+literais dela: [-1, 3, 16]
+literal da iteracao atual -1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 16
+reassistindo o literal nao assinalado 16
+
+M depois de propagar
+[(10 @ 1, None), (-3 @ 2, None)]
+25 clausulas de 91 são satisfeitas, continuando...
+
+-------------------------------------------------
+M antes de decidir um novo literal
+[(10 @ 1, None), (-3 @ 2, None)]
+
+lista de possiveis candidatos [-12, -1, 17, 9, -15, 16, -2, -7, 8, -8, -17, -4, -5, -6, 7, 12, 13, -13, -14, 18, -9, 11, -11, 14, -19, 1, 2, 5, 19, 20, 6, 15, 4, -16, -20, -18]
+
+decidindo: 12 vale False
+assinalando 12 como False por causa de cNone
+[(10 @ 1, None), (-3 @ 2, None), (-12 @ 3, None)]
+decision level do novo literal 3
+
+to unit propagate
+[-12]
+
+propagando -12 vamos alterar os ponteiros das clausulas que assistem 12
+clausulas [2, 30, 39, 47, 81] assistindo 12
+
+clausula 2
+literais dela: [13, 12, 2]
+literal da iteracao atual 13
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 2
+reassistindo o literal nao assinalado 2
+
+clausula 30
+literais dela: [-10, 12, -2]
+literal da iteracao atual -10
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -2
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [12, -2]
+primeiro ponteiro era 12 e o segundo eh -2
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 2 como False por causa de c30
+[(10 @ 1, None), (-3 @ 2, None), (-12 @ 3, None), (-2 @ 3, c30)]
+
+clausula 39
+literais dela: [12, -9, 2]
+literal da iteracao atual 12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 2
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [12, -9]
+primeiro ponteiro era 12 e o segundo eh -9
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 9 como False por causa de c39
+[(10 @ 1, None), (-3 @ 2, None), (-12 @ 3, None), (-2 @ 3, c30), (-9 @ 3, c39)]
+
+clausula 47
+literais dela: [12, 16, -8]
+literal da iteracao atual 12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 16
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -8
+reassistindo o literal nao assinalado -8
+
+clausula 81
+literais dela: [-14, 12, 13]
+literal da iteracao atual -14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 13
+reassistindo o literal nao assinalado 13
+
+propagando -9 vamos alterar os ponteiros das clausulas que assistem 9
+clausulas [13, 37, 38, 49, 71, 34] assistindo 9
+
+clausula 13
+literais dela: [10, 9, -8]
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -8
+reassistindo o literal nao assinalado -8
+
+clausula 37
+literais dela: [16, 9, 12]
+literal da iteracao atual 16
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 12
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [16, 9]
+primeiro ponteiro era 9 e o segundo eh 16
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 16 como True por causa de c37
+[(10 @ 1, None), (-3 @ 2, None), (-12 @ 3, None), (-2 @ 3, c30), (-9 @ 3, c39), (16 @ 3, c37)]
+
+clausula 38
+literais dela: [-4, 9, -5]
+literal da iteracao atual -4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+reassistindo o literal nao assinalado -5
+
+clausula 49
+literais dela: [4, 9, -13]
+literal da iteracao atual 4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -13
+reassistindo o literal nao assinalado -13
+
+clausula 71
+literais dela: [9, -12, 7]
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 7
+reassistindo o literal nao assinalado 7
+
+clausula 34
+literais dela: [3, 10, 9]
+literal da iteracao atual 3
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [10, 9]
+primeiro ponteiro era 9 e o segundo eh 10
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+propagando 16 vamos alterar os ponteiros das clausulas que assistem -16
+clausulas [12, 61, 76] assistindo -16
+
+clausula 12
+literais dela: [14, -16, 3]
+literal da iteracao atual 14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -16
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [14, -16]
+primeiro ponteiro era -16 e o segundo eh 14
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 14 como True por causa de c12
+[(10 @ 1, None), (-3 @ 2, None), (-12 @ 3, None), (-2 @ 3, c30), (-9 @ 3, c39), (16 @ 3, c37), (14 @ 3, c12)]
+
+clausula 61
+literais dela: [-16, -4, -2]
+literal da iteracao atual -16
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -2
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 76
+literais dela: [-14, -16, 20]
+literal da iteracao atual -14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -16
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 20
+reassistindo o literal nao assinalado 20
+
+propagando 14 vamos alterar os ponteiros das clausulas que assistem -14
+clausulas [17, 21, 24, 76, 81, 82] assistindo -14
+
+clausula 17
+literais dela: [7, -14, 17]
+literal da iteracao atual 7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 17
+reassistindo o literal nao assinalado 17
+
+clausula 21
+literais dela: [-14, -11, 16]
+literal da iteracao atual -14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -11
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 16
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 24
+literais dela: [-14, 2, 18]
+literal da iteracao atual -14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 2
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 18
+reassistindo o literal nao assinalado 18
+
+clausula 76
+literais dela: [-14, -16, 20]
+literal da iteracao atual -14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -16
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 20
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-14, 20]
+primeiro ponteiro era -14 e o segundo eh 20
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 20 como True por causa de c76
+[(10 @ 1, None), (-3 @ 2, None), (-12 @ 3, None), (-2 @ 3, c30), (-9 @ 3, c39), (16 @ 3, c37), (14 @ 3, c12), (20 @ 3, c76)]
+
+clausula 81
+literais dela: [-14, 12, 13]
+literal da iteracao atual -14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 12
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 13
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [13, -14]
+primeiro ponteiro era -14 e o segundo eh 13
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 13 como True por causa de c81
+[(10 @ 1, None), (-3 @ 2, None), (-12 @ 3, None), (-2 @ 3, c30), (-9 @ 3, c39), (16 @ 3, c37), (14 @ 3, c12), (20 @ 3, c76), (13 @ 3, c81)]
+
+clausula 82
+literais dela: [-14, 6, -1]
+literal da iteracao atual -14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 6
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -1
+reassistindo o literal nao assinalado -1
+
+propagando 13 vamos alterar os ponteiros das clausulas que assistem -13
+clausulas [1, 16, 43, 62, 80, 84, 49] assistindo -13
+
+clausula 1
+literais dela: [-13, 16, -10]
+literal da iteracao atual -13
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 16
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-13, 16]
+primeiro ponteiro era -13 e o segundo eh 16
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 16
+literais dela: [14, -13, 17]
+literal da iteracao atual 14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -13
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 17
+reassistindo o literal nao assinalado 17
+
+clausula 43
+literais dela: [10, -13, -4]
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -13
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -4
+reassistindo o literal nao assinalado -4
+
+clausula 62
+literais dela: [-13, 10, -3]
+literal da iteracao atual -13
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -3
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 80
+literais dela: [-4, -13, -20]
+literal da iteracao atual -4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -13
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -20
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-13, -4]
+primeiro ponteiro era -13 e o segundo eh -4
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 4 como False por causa de c80
+[(10 @ 1, None), (-3 @ 2, None), (-12 @ 3, None), (-2 @ 3, c30), (-9 @ 3, c39), (16 @ 3, c37), (14 @ 3, c12), (20 @ 3, c76), (13 @ 3, c81), (-4 @ 3, c80)]
+
+clausula 84
+literais dela: [-2, -13, -3]
+literal da iteracao atual -2
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -13
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -3
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 49
+literais dela: [4, 9, -13]
+literal da iteracao atual 4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -13
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-13, 4]
+primeiro ponteiro era -13 e o segundo eh 4
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh False, conflito na clausula 49
+
+conflito na clausula c49
+lista de decision levels [3, 2, 1]
+novo decision level 2
+clausula de conflito aprendida Clause(literals=[12, -10, 3])
+removendo 12 dos assinalamentos
+removendo 2 dos assinalamentos
+removendo 9 dos assinalamentos
+removendo 16 dos assinalamentos
+removendo 14 dos assinalamentos
+removendo 20 dos assinalamentos
+removendo 13 dos assinalamentos
+removendo 4 dos assinalamentos
+assinalando 12 como True por causa de c91
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91)]
+
+to unit propagate
+[12]
+
+propagando 12 vamos alterar os ponteiros das clausulas que assistem -12
+clausulas [3, 9, 48, 57, 58, 59, 64, 66, 71] assistindo -12
+
+clausula 3
+literais dela: [-20, -12, 11]
+literal da iteracao atual -20
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 11
+reassistindo o literal nao assinalado 11
+
+clausula 9
+literais dela: [-3, -12, -8]
+literal da iteracao atual -3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -8
+reassistindo o literal nao assinalado -8
+
+clausula 48
+literais dela: [5, -12, 6]
+literal da iteracao atual 5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 6
+reassistindo o literal nao assinalado 6
+
+clausula 57
+literais dela: [-12, -10, 18]
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 18
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-12, 18]
+primeiro ponteiro era -12 e o segundo eh 18
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 18 como True por causa de c57
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57)]
+
+clausula 58
+literais dela: [-12, -19, -3]
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -19
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -3
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 59
+literais dela: [-1, -12, -17]
+literal da iteracao atual -1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -17
+reassistindo o literal nao assinalado -17
+
+clausula 64
+literais dela: [13, -12, -19]
+literal da iteracao atual 13
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -19
+reassistindo o literal nao assinalado -19
+
+clausula 66
+literais dela: [-12, 8, -15]
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -15
+reassistindo o literal nao assinalado -15
+
+clausula 71
+literais dela: [9, -12, 7]
+literal da iteracao atual 9
+reassistindo o literal nao assinalado 9
+
+propagando 18 vamos alterar os ponteiros das clausulas que assistem -18
+clausulas [] assistindo -18
+
+M depois de propagar
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57)]
+38 clausulas de 92 são satisfeitas, continuando...
+
+-------------------------------------------------
+M antes de decidir um novo literal
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57)]
+
+lista de possiveis candidatos [-1, 17, 9, -15, 16, -2, -7, 8, -8, -17, -4, -5, -6, 7, 13, -13, -14, -9, 11, -11, 14, -19, 1, 2, 5, 19, 20, 6, 15, 4, -16, -20]
+
+decidindo: 1 vale False
+assinalando 1 como False por causa de cNone
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None)]
+decision level do novo literal 3
+
+to unit propagate
+[-1]
+
+propagando -1 vamos alterar os ponteiros das clausulas que assistem 1
+clausulas [0, 10, 11, 88] assistindo 1
+
+clausula 0
+literais dela: [8, 1, -15]
+literal da iteracao atual 8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -15
+reassistindo o literal nao assinalado -15
+
+clausula 10
+literais dela: [1, 18, 9]
+literal da iteracao atual 1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 18
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+reassistindo o literal nao assinalado 9
+
+clausula 11
+literais dela: [1, 7, 12]
+literal da iteracao atual 1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 12
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 88
+literais dela: [1, 20, 10]
+literal da iteracao atual 1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 20
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 10
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+M depois de propagar
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None)]
+47 clausulas de 92 são satisfeitas, continuando...
+
+-------------------------------------------------
+M antes de decidir um novo literal
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None)]
+
+lista de possiveis candidatos [17, 9, -15, 16, -2, -7, 8, -8, -17, -4, -5, -6, 7, 13, -13, -14, -9, 11, -11, 14, -19, 2, 5, 19, 20, 6, 15, 4, -16, -20]
+
+decidindo: 17 vale True
+assinalando 17 como True por causa de cNone
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None)]
+decision level do novo literal 4
+
+to unit propagate
+[17]
+
+propagando 17 vamos alterar os ponteiros das clausulas que assistem -17
+clausulas [4, 8, 25, 35, 63, 87, 89, 59] assistindo -17
+
+clausula 4
+literais dela: [16, -17, 11]
+literal da iteracao atual 16
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 11
+reassistindo o literal nao assinalado 11
+
+clausula 8
+literais dela: [-8, -17, -19]
+literal da iteracao atual -8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -19
+reassistindo o literal nao assinalado -19
+
+clausula 25
+literais dela: [-17, -5, 10]
+literal da iteracao atual -17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 10
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 35
+literais dela: [-15, -17, 9]
+literal da iteracao atual -15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+reassistindo o literal nao assinalado 9
+
+clausula 63
+literais dela: [-15, -17, 14]
+literal da iteracao atual -15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 14
+reassistindo o literal nao assinalado 14
+
+clausula 87
+literais dela: [-17, 5, -12]
+literal da iteracao atual -17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-17, 5]
+primeiro ponteiro era -17 e o segundo eh 5
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 5 como True por causa de c87
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87)]
+
+clausula 89
+literais dela: [-3, -17, -19]
+literal da iteracao atual -3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -19
+reassistindo o literal nao assinalado -19
+
+clausula 59
+literais dela: [-1, -12, -17]
+literal da iteracao atual -1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -17
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-17, -1]
+primeiro ponteiro era -17 e o segundo eh -1
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+propagando 5 vamos alterar os ponteiros das clausulas que assistem -5
+clausulas [18, 25, 46, 65, 70, 38] assistindo -5
+
+clausula 18
+literais dela: [19, -5, 18]
+literal da iteracao atual 19
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 18
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 25
+literais dela: [-17, -5, 10]
+literal da iteracao atual -17
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [10, -5]
+primeiro ponteiro era -5 e o segundo eh 10
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 46
+literais dela: [17, -5, 10]
+literal da iteracao atual 17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 10
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 65
+literais dela: [-9, -5, -11]
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -11
+reassistindo o literal nao assinalado -11
+
+clausula 70
+literais dela: [-5, -8, 14]
+literal da iteracao atual -5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 14
+reassistindo o literal nao assinalado 14
+
+clausula 38
+literais dela: [-4, 9, -5]
+literal da iteracao atual -4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+reassistindo o literal nao assinalado 9
+
+M depois de propagar
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87)]
+54 clausulas de 92 são satisfeitas, continuando...
+
+-------------------------------------------------
+M antes de decidir um novo literal
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87)]
+
+lista de possiveis candidatos [9, -15, 16, -2, -7, 8, -8, -4, -6, 7, 13, -13, -14, -9, 11, -11, 14, -19, 2, 19, 20, 6, 15, 4, -16, -20]
+
+decidindo: 9 vale True
+assinalando 9 como True por causa de cNone
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87), (9 @ 5, None)]
+decision level do novo literal 5
+
+to unit propagate
+[9]
+
+propagando 9 vamos alterar os ponteiros das clausulas que assistem -9
+clausulas [22, 39, 65, 90, 79] assistindo -9
+
+clausula 22
+literais dela: [8, -9, 11]
+literal da iteracao atual 8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 11
+reassistindo o literal nao assinalado 11
+
+clausula 39
+literais dela: [12, -9, 2]
+literal da iteracao atual 12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 2
+reassistindo o literal nao assinalado 2
+
+clausula 65
+literais dela: [-9, -5, -11]
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -11
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-11, -9]
+primeiro ponteiro era -9 e o segundo eh -11
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 11 como False por causa de c65
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87), (9 @ 5, None), (-11 @ 5, c65)]
+
+clausula 90
+literais dela: [-9, -19, 20]
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -19
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 20
+reassistindo o literal nao assinalado 20
+
+clausula 79
+literais dela: [-10, 15, -9]
+literal da iteracao atual -10
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-9, 15]
+primeiro ponteiro era -9 e o segundo eh 15
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 15 como True por causa de c79
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87), (9 @ 5, None), (-11 @ 5, c65), (15 @ 5, c79)]
+
+propagando 15 vamos alterar os ponteiros das clausulas que assistem -15
+clausulas [28, 32, 35, 36, 44, 63, 42, 66, 0] assistindo -15
+
+clausula 28
+literais dela: [-15, 7, 10]
+literal da iteracao atual -15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 10
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 32
+literais dela: [3, -15, -2]
+literal da iteracao atual 3
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -2
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-15, -2]
+primeiro ponteiro era -15 e o segundo eh -2
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 2 como False por causa de c32
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87), (9 @ 5, None), (-11 @ 5, c65), (15 @ 5, c79), (-2 @ 5, c32)]
+
+clausula 35
+literais dela: [-15, -17, 9]
+literal da iteracao atual -15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -17
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [9, -15]
+primeiro ponteiro era -15 e o segundo eh 9
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 36
+literais dela: [-15, -1, -12]
+literal da iteracao atual -15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-1, -15]
+primeiro ponteiro era -15 e o segundo eh -1
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 44
+literais dela: [-15, 8, 19]
+literal da iteracao atual -15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 19
+reassistindo o literal nao assinalado 19
+
+clausula 63
+literais dela: [-15, -17, 14]
+literal da iteracao atual -15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -17
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 14
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [14, -15]
+primeiro ponteiro era -15 e o segundo eh 14
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 14 como True por causa de c63
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87), (9 @ 5, None), (-11 @ 5, c65), (15 @ 5, c79), (-2 @ 5, c32), (14 @ 5, c63)]
+
+clausula 42
+literais dela: [3, 4, -15]
+literal da iteracao atual 3
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -15
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-15, 4]
+primeiro ponteiro era -15 e o segundo eh 4
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 4 como True por causa de c42
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87), (9 @ 5, None), (-11 @ 5, c65), (15 @ 5, c79), (-2 @ 5, c32), (14 @ 5, c63), (4 @ 5, c42)]
+
+clausula 66
+literais dela: [-12, 8, -15]
+literal da iteracao atual -12
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -15
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [8, -15]
+primeiro ponteiro era -15 e o segundo eh 8
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 8 como True por causa de c66
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87), (9 @ 5, None), (-11 @ 5, c65), (15 @ 5, c79), (-2 @ 5, c32), (14 @ 5, c63), (4 @ 5, c42), (8 @ 5, c66)]
+
+clausula 0
+literais dela: [8, 1, -15]
+literal da iteracao atual 8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 1
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -15
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [8, -15]
+primeiro ponteiro era -15 e o segundo eh 8
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+propagando 8 vamos alterar os ponteiros das clausulas que assistem -8
+clausulas [8, 15, 70, 47, 13, 9] assistindo -8
+
+clausula 8
+literais dela: [-8, -17, -19]
+literal da iteracao atual -8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -17
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -19
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-8, -19]
+primeiro ponteiro era -8 e o segundo eh -19
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 19 como False por causa de c8
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87), (9 @ 5, None), (-11 @ 5, c65), (15 @ 5, c79), (-2 @ 5, c32), (14 @ 5, c63), (4 @ 5, c42), (8 @ 5, c66), (-19 @ 5, c8)]
+
+clausula 15
+literais dela: [-3, -8, 5]
+literal da iteracao atual -3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 5
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 70
+literais dela: [-5, -8, 14]
+literal da iteracao atual -5
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 14
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-8, 14]
+primeiro ponteiro era -8 e o segundo eh 14
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 47
+literais dela: [12, 16, -8]
+literal da iteracao atual 12
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 13
+literais dela: [10, 9, -8]
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 9
+literais dela: [-3, -12, -8]
+literal da iteracao atual -3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -8
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-8, -3]
+primeiro ponteiro era -8 e o segundo eh -3
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+propagando -19 vamos alterar os ponteiros das clausulas que assistem 19
+clausulas [5, 18, 54, 67, 44] assistindo 19
+
+clausula 5
+literais dela: [10, 19, -9]
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 19
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [10, 19]
+primeiro ponteiro era 19 e o segundo eh 10
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 18
+literais dela: [19, -5, 18]
+literal da iteracao atual 19
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 18
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [19, 18]
+primeiro ponteiro era 19 e o segundo eh 18
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 54
+literais dela: [-7, 19, 1]
+literal da iteracao atual -7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 19
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 1
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [19, -7]
+primeiro ponteiro era 19 e o segundo eh -7
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 7 como False por causa de c54
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87), (9 @ 5, None), (-11 @ 5, c65), (15 @ 5, c79), (-2 @ 5, c32), (14 @ 5, c63), (4 @ 5, c42), (8 @ 5, c66), (-19 @ 5, c8), (-7 @ 5, c54)]
+
+clausula 67
+literais dela: [6, 19, 3]
+literal da iteracao atual 6
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 19
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [19, 6]
+primeiro ponteiro era 19 e o segundo eh 6
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 6 como True por causa de c67
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87), (9 @ 5, None), (-11 @ 5, c65), (15 @ 5, c79), (-2 @ 5, c32), (14 @ 5, c63), (4 @ 5, c42), (8 @ 5, c66), (-19 @ 5, c8), (-7 @ 5, c54), (6 @ 5, c67)]
+
+clausula 44
+literais dela: [-15, 8, 19]
+literal da iteracao atual -15
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 19
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [8, 19]
+primeiro ponteiro era 19 e o segundo eh 8
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+propagando 6 vamos alterar os ponteiros das clausulas que assistem -6
+clausulas [19, 20, 56, 69, 75, 83] assistindo -6
+
+clausula 19
+literais dela: [-6, 2, 17]
+literal da iteracao atual -6
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 2
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 17
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 20
+literais dela: [20, -6, 11]
+literal da iteracao atual 20
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -6
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 11
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-6, 20]
+primeiro ponteiro era -6 e o segundo eh 20
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 20 como True por causa de c20
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87), (9 @ 5, None), (-11 @ 5, c65), (15 @ 5, c79), (-2 @ 5, c32), (14 @ 5, c63), (4 @ 5, c42), (8 @ 5, c66), (-19 @ 5, c8), (-7 @ 5, c54), (6 @ 5, c67), (20 @ 5, c20)]
+
+clausula 56
+literais dela: [-4, -6, -5]
+literal da iteracao atual -4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -6
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-6, -4]
+primeiro ponteiro era -6 e o segundo eh -4
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh False, conflito na clausula 56
+
+conflito na clausula c56
+lista de decision levels [5, 4, 3, 2, 1]
+novo decision level 4
+clausula de conflito aprendida Clause(literals=[-17, -12, -10, -5, 3, 1, -9])
+removendo 9 dos assinalamentos
+removendo 11 dos assinalamentos
+removendo 15 dos assinalamentos
+removendo 2 dos assinalamentos
+removendo 14 dos assinalamentos
+removendo 4 dos assinalamentos
+removendo 8 dos assinalamentos
+removendo 19 dos assinalamentos
+removendo 7 dos assinalamentos
+removendo 6 dos assinalamentos
+removendo 20 dos assinalamentos
+assinalando 9 como False por causa de c92
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87), (-9 @ 4, c92)]
+
+to unit propagate
+[-9]
+
+propagando -9 vamos alterar os ponteiros das clausulas que assistem 9
+clausulas [37, 34, 71, 10, 35, 38, 13] assistindo 9
+
+clausula 37
+literais dela: [16, 9, 12]
+literal da iteracao atual 16
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 12
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 34
+literais dela: [3, 10, 9]
+literal da iteracao atual 3
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [10, 9]
+primeiro ponteiro era 9 e o segundo eh 10
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 71
+literais dela: [9, -12, 7]
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 7
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [7, 9]
+primeiro ponteiro era 9 e o segundo eh 7
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 7 como True por causa de c71
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87), (-9 @ 4, c92), (7 @ 4, c71)]
+
+clausula 10
+literais dela: [1, 18, 9]
+literal da iteracao atual 1
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 18
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [18, 9]
+primeiro ponteiro era 9 e o segundo eh 18
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 35
+literais dela: [-15, -17, 9]
+literal da iteracao atual -15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -17
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [9, -15]
+primeiro ponteiro era 9 e o segundo eh -15
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 15 como False por causa de c35
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87), (-9 @ 4, c92), (7 @ 4, c71), (-15 @ 4, c35)]
+
+clausula 38
+literais dela: [-4, 9, -5]
+literal da iteracao atual -4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [9, -4]
+primeiro ponteiro era 9 e o segundo eh -4
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 4 como False por causa de c38
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87), (-9 @ 4, c92), (7 @ 4, c71), (-15 @ 4, c35), (-4 @ 4, c38)]
+
+clausula 13
+literais dela: [10, 9, -8]
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -8
+reassistindo o literal nao assinalado -8
+
+propagando -4 vamos alterar os ponteiros das clausulas que assistem 4
+clausulas [42, 49, 50] assistindo 4
+
+clausula 42
+literais dela: [3, 4, -15]
+literal da iteracao atual 3
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -15
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-15, 4]
+primeiro ponteiro era 4 e o segundo eh -15
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 49
+literais dela: [4, 9, -13]
+literal da iteracao atual 4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -13
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-13, 4]
+primeiro ponteiro era 4 e o segundo eh -13
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 13 como False por causa de c49
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87), (-9 @ 4, c92), (7 @ 4, c71), (-15 @ 4, c35), (-4 @ 4, c38), (-13 @ 4, c49)]
+
+clausula 50
+literais dela: [-7, 4, -3]
+literal da iteracao atual -7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -3
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+propagando -13 vamos alterar os ponteiros das clausulas que assistem 13
+clausulas [2, 55, 60, 64, 74, 77, 81] assistindo 13
+
+clausula 2
+literais dela: [13, 12, 2]
+literal da iteracao atual 13
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 12
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 55
+literais dela: [13, 8, 16]
+literal da iteracao atual 13
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 16
+reassistindo o literal nao assinalado 16
+
+clausula 60
+literais dela: [13, 20, -8]
+literal da iteracao atual 13
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 20
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -8
+reassistindo o literal nao assinalado -8
+
+clausula 64
+literais dela: [13, -12, -19]
+literal da iteracao atual 13
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -19
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [13, -19]
+primeiro ponteiro era 13 e o segundo eh -19
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 19 como False por causa de c64
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (17 @ 4, None), (5 @ 4, c87), (-9 @ 4, c92), (7 @ 4, c71), (-15 @ 4, c35), (-4 @ 4, c38), (-13 @ 4, c49), (-19 @ 4, c64)]
+
+clausula 74
+literais dela: [14, 13, -11]
+literal da iteracao atual 14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 13
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -11
+reassistindo o literal nao assinalado -11
+
+clausula 77
+literais dela: [13, 10, 15]
+literal da iteracao atual 13
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 15
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [13, 10]
+primeiro ponteiro era 13 e o segundo eh 10
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 81
+literais dela: [-14, 12, 13]
+literal da iteracao atual -14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 12
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+propagando -19 vamos alterar os ponteiros das clausulas que assistem 19
+clausulas [5, 18, 54, 67, 44] assistindo 19
+
+clausula 5
+literais dela: [10, 19, -9]
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 19
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 18
+literais dela: [19, -5, 18]
+literal da iteracao atual 19
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 18
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [19, 18]
+primeiro ponteiro era 19 e o segundo eh 18
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 54
+literais dela: [-7, 19, 1]
+literal da iteracao atual -7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 19
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 1
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [19, -7]
+primeiro ponteiro era 19 e o segundo eh -7
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh False, conflito na clausula 54
+
+conflito na clausula c54
+lista de decision levels [4, 3, 2, 1]
+novo decision level 3
+clausula de conflito aprendida Clause(literals=[-17, -12, -10, 3, 1])
+removendo 17 dos assinalamentos
+removendo 5 dos assinalamentos
+removendo 9 dos assinalamentos
+removendo 7 dos assinalamentos
+removendo 15 dos assinalamentos
+removendo 4 dos assinalamentos
+removendo 13 dos assinalamentos
+removendo 19 dos assinalamentos
+assinalando 17 como False por causa de c93
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (-17 @ 3, c93)]
+
+to unit propagate
+[-17]
+
+propagando -17 vamos alterar os ponteiros das clausulas que assistem 17
+clausulas [6, 46, 52, 53, 68, 17, 16, 19] assistindo 17
+
+clausula 6
+literais dela: [17, -1, 9]
+literal da iteracao atual 17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+reassistindo o literal nao assinalado 9
+
+clausula 46
+literais dela: [17, -5, 10]
+literal da iteracao atual 17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+reassistindo o literal nao assinalado -5
+
+clausula 52
+literais dela: [17, 18, 5]
+literal da iteracao atual 17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 18
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 5
+reassistindo o literal nao assinalado 5
+
+clausula 53
+literais dela: [17, -7, -19]
+literal da iteracao atual 17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -19
+reassistindo o literal nao assinalado -19
+
+clausula 68
+literais dela: [-4, 17, -1]
+literal da iteracao atual -4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -1
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 17
+literais dela: [7, -14, 17]
+literal da iteracao atual 7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -14
+reassistindo o literal nao assinalado -14
+
+clausula 16
+literais dela: [14, -13, 17]
+literal da iteracao atual 14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -13
+reassistindo o literal nao assinalado -13
+
+clausula 19
+literais dela: [-6, 2, 17]
+literal da iteracao atual -6
+reassistindo o literal nao assinalado -6
+
+M depois de propagar
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (-17 @ 3, c93)]
+54 clausulas de 94 são satisfeitas, continuando...
+
+-------------------------------------------------
+M antes de decidir um novo literal
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (-17 @ 3, c93)]
+
+lista de possiveis candidatos [9, -15, 16, -5, -2, -7, 8, -8, -9, -4, -6, 7, 13, -13, -14, 11, -11, 14, -19, 2, 5, 19, 20, 6, 15, 4, -16, -20]
+
+decidindo: 9 vale True
+assinalando 9 como True por causa de cNone
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (-17 @ 3, c93), (9 @ 4, None)]
+decision level do novo literal 4
+
+to unit propagate
+[9]
+
+propagando 9 vamos alterar os ponteiros das clausulas que assistem -9
+clausulas [65, 79, 92, 5] assistindo -9
+
+clausula 65
+literais dela: [-9, -5, -11]
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+reassistindo o literal nao assinalado -5
+
+clausula 79
+literais dela: [-10, 15, -9]
+literal da iteracao atual -10
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-9, 15]
+primeiro ponteiro era -9 e o segundo eh 15
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 15 como True por causa de c79
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (-17 @ 3, c93), (9 @ 4, None), (15 @ 4, c79)]
+
+clausula 92
+literais dela: [-17, -12, -10, -5, 3, 1, -9]
+literal da iteracao atual -17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [1, -12, -17, -5, -9, -10, 3]
+primeiro ponteiro era -9 e o segundo eh -12
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh False, conflito na clausula 92
+
+conflito na clausula c92
+lista de decision levels [4, 3, 2, 1]
+novo decision level 3
+clausula de conflito aprendida Clause(literals=[-17, -12, -10, -5, 3, 1, -9])
+removendo 9 dos assinalamentos
+removendo 15 dos assinalamentos
+assinalando 5 como False por causa de c92
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (-17 @ 3, c93), (-5 @ 3, c92)]
+
+to unit propagate
+[-5]
+
+propagando -5 vamos alterar os ponteiros das clausulas que assistem 5
+clausulas [29, 48, 87, 15, 52] assistindo 5
+
+clausula 29
+literais dela: [5, -2, -11]
+literal da iteracao atual 5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -2
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -11
+reassistindo o literal nao assinalado -11
+
+clausula 48
+literais dela: [5, -12, 6]
+literal da iteracao atual 5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 6
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [5, 6]
+primeiro ponteiro era 5 e o segundo eh 6
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 6 como True por causa de c48
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (-17 @ 3, c93), (-5 @ 3, c92), (6 @ 3, c48)]
+
+clausula 87
+literais dela: [-17, 5, -12]
+literal da iteracao atual -17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-17, 5]
+primeiro ponteiro era 5 e o segundo eh -17
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 15
+literais dela: [-3, -8, 5]
+literal da iteracao atual -3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -8
+reassistindo o literal nao assinalado -8
+
+clausula 52
+literais dela: [17, 18, 5]
+literal da iteracao atual 17
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 18
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 5
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [18, 5]
+primeiro ponteiro era 5 e o segundo eh 18
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+propagando 6 vamos alterar os ponteiros das clausulas que assistem -6
+clausulas [20, 56, 69, 75, 83, 19] assistindo -6
+
+clausula 20
+literais dela: [20, -6, 11]
+literal da iteracao atual 20
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -6
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 11
+reassistindo o literal nao assinalado 11
+
+clausula 56
+literais dela: [-4, -6, -5]
+literal da iteracao atual -4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -6
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 69
+literais dela: [-6, -3, 18]
+literal da iteracao atual -6
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 18
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 75
+literais dela: [11, -6, 10]
+literal da iteracao atual 11
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -6
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 10
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 83
+literais dela: [-1, -6, -7]
+literal da iteracao atual -1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -6
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -7
+reassistindo o literal nao assinalado -7
+
+clausula 19
+literais dela: [-6, 2, 17]
+literal da iteracao atual -6
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 2
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 17
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-6, 2]
+primeiro ponteiro era -6 e o segundo eh 2
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 2 como True por causa de c19
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (-17 @ 3, c93), (-5 @ 3, c92), (6 @ 3, c48), (2 @ 3, c19)]
+
+propagando 2 vamos alterar os ponteiros das clausulas que assistem -2
+clausulas [29, 31, 45, 84, 30, 32, 61] assistindo -2
+
+clausula 29
+literais dela: [5, -2, -11]
+literal da iteracao atual 5
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -2
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -11
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-11, -2]
+primeiro ponteiro era -2 e o segundo eh -11
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 11 como False por causa de c29
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (-17 @ 3, c93), (-5 @ 3, c92), (6 @ 3, c48), (2 @ 3, c19), (-11 @ 3, c29)]
+
+clausula 31
+literais dela: [-2, -3, -7]
+literal da iteracao atual -2
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -7
+reassistindo o literal nao assinalado -7
+
+clausula 45
+literais dela: [-2, 10, 8]
+literal da iteracao atual -2
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 8
+reassistindo o literal nao assinalado 8
+
+clausula 84
+literais dela: [-2, -13, -3]
+literal da iteracao atual -2
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -13
+reassistindo o literal nao assinalado -13
+
+clausula 30
+literais dela: [-10, 12, -2]
+literal da iteracao atual -10
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -2
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [12, -2]
+primeiro ponteiro era -2 e o segundo eh 12
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 32
+literais dela: [3, -15, -2]
+literal da iteracao atual 3
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -2
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-15, -2]
+primeiro ponteiro era -2 e o segundo eh -15
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 15 como False por causa de c32
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (-17 @ 3, c93), (-5 @ 3, c92), (6 @ 3, c48), (2 @ 3, c19), (-11 @ 3, c29), (-15 @ 3, c32)]
+
+clausula 61
+literais dela: [-16, -4, -2]
+literal da iteracao atual -16
+reassistindo o literal nao assinalado -16
+
+propagando -15 vamos alterar os ponteiros das clausulas que assistem 15
+clausulas [41, 79, 85] assistindo 15
+
+clausula 41
+literais dela: [-1, 15, -2]
+literal da iteracao atual -1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -2
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-1, 15]
+primeiro ponteiro era 15 e o segundo eh -1
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 79
+literais dela: [-10, 15, -9]
+literal da iteracao atual -10
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-9, 15]
+primeiro ponteiro era 15 e o segundo eh -9
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 9 como False por causa de c79
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (-17 @ 3, c93), (-5 @ 3, c92), (6 @ 3, c48), (2 @ 3, c19), (-11 @ 3, c29), (-15 @ 3, c32), (-9 @ 3, c79)]
+
+clausula 85
+literais dela: [15, 10, -8]
+literal da iteracao atual 15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -8
+reassistindo o literal nao assinalado -8
+
+propagando -9 vamos alterar os ponteiros das clausulas que assistem 9
+clausulas [34, 71, 10, 35, 38, 6] assistindo 9
+
+clausula 34
+literais dela: [3, 10, 9]
+literal da iteracao atual 3
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [10, 9]
+primeiro ponteiro era 9 e o segundo eh 10
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 71
+literais dela: [9, -12, 7]
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 7
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [7, 9]
+primeiro ponteiro era 9 e o segundo eh 7
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 7 como True por causa de c71
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (-17 @ 3, c93), (-5 @ 3, c92), (6 @ 3, c48), (2 @ 3, c19), (-11 @ 3, c29), (-15 @ 3, c32), (-9 @ 3, c79), (7 @ 3, c71)]
+
+clausula 10
+literais dela: [1, 18, 9]
+literal da iteracao atual 1
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 18
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [18, 9]
+primeiro ponteiro era 9 e o segundo eh 18
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 35
+literais dela: [-15, -17, 9]
+literal da iteracao atual -15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -17
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 38
+literais dela: [-4, 9, -5]
+literal da iteracao atual -4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 6
+literais dela: [17, -1, 9]
+literal da iteracao atual 17
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-1, 9]
+primeiro ponteiro era 9 e o segundo eh -1
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+propagando 7 vamos alterar os ponteiros das clausulas que assistem -7
+clausulas [23, 40, 50, 53, 54, 78, 83, 31] assistindo -7
+
+clausula 23
+literais dela: [-7, 16, -18]
+literal da iteracao atual -7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 16
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -18
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [16, -7]
+primeiro ponteiro era -7 e o segundo eh 16
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 16 como True por causa de c23
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (-17 @ 3, c93), (-5 @ 3, c92), (6 @ 3, c48), (2 @ 3, c19), (-11 @ 3, c29), (-15 @ 3, c32), (-9 @ 3, c79), (7 @ 3, c71), (16 @ 3, c23)]
+
+clausula 40
+literais dela: [-7, 8, 3]
+literal da iteracao atual -7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [8, -7]
+primeiro ponteiro era -7 e o segundo eh 8
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 8 como True por causa de c40
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (-17 @ 3, c93), (-5 @ 3, c92), (6 @ 3, c48), (2 @ 3, c19), (-11 @ 3, c29), (-15 @ 3, c32), (-9 @ 3, c79), (7 @ 3, c71), (16 @ 3, c23), (8 @ 3, c40)]
+
+clausula 50
+literais dela: [-7, 4, -3]
+literal da iteracao atual -7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 4
+reassistindo o literal nao assinalado 4
+
+clausula 53
+literais dela: [17, -7, -19]
+literal da iteracao atual 17
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -19
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-7, -19]
+primeiro ponteiro era -7 e o segundo eh -19
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 19 como False por causa de c53
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (-1 @ 3, None), (-17 @ 3, c93), (-5 @ 3, c92), (6 @ 3, c48), (2 @ 3, c19), (-11 @ 3, c29), (-15 @ 3, c32), (-9 @ 3, c79), (7 @ 3, c71), (16 @ 3, c23), (8 @ 3, c40), (-19 @ 3, c53)]
+
+clausula 54
+literais dela: [-7, 19, 1]
+literal da iteracao atual -7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 19
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 1
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [19, -7]
+primeiro ponteiro era -7 e o segundo eh 19
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh False, conflito na clausula 54
+
+conflito na clausula c54
+lista de decision levels [3, 2, 1]
+novo decision level 2
+clausula de conflito aprendida Clause(literals=[-12, -18, -10, 3, 1, -9])
+removendo 1 dos assinalamentos
+removendo 17 dos assinalamentos
+removendo 5 dos assinalamentos
+removendo 6 dos assinalamentos
+removendo 2 dos assinalamentos
+removendo 11 dos assinalamentos
+removendo 15 dos assinalamentos
+removendo 9 dos assinalamentos
+removendo 7 dos assinalamentos
+removendo 16 dos assinalamentos
+removendo 8 dos assinalamentos
+removendo 19 dos assinalamentos
+assinalando 1 como True por causa de c95
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (1 @ 2, c95)]
+
+to unit propagate
+[1]
+
+propagando 1 vamos alterar os ponteiros das clausulas que assistem -1
+clausulas [6, 26, 27, 36, 41, 59, 83, 86, 82, 68] assistindo -1
+
+clausula 6
+literais dela: [17, -1, 9]
+literal da iteracao atual 17
+reassistindo o literal nao assinalado 17
+
+clausula 26
+literais dela: [-1, -11, 17]
+literal da iteracao atual -1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -11
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 17
+reassistindo o literal nao assinalado 17
+
+clausula 27
+literais dela: [-1, -3, -6]
+literal da iteracao atual -1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -6
+reassistindo o literal nao assinalado -6
+
+clausula 36
+literais dela: [-15, -1, -12]
+literal da iteracao atual -15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-1, -15]
+primeiro ponteiro era -1 e o segundo eh -15
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 15 como False por causa de c36
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (1 @ 2, c95), (-15 @ 2, c36)]
+
+clausula 41
+literais dela: [-1, 15, -2]
+literal da iteracao atual -1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 15
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -2
+reassistindo o literal nao assinalado -2
+
+clausula 59
+literais dela: [-1, -12, -17]
+literal da iteracao atual -1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -17
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-17, -1]
+primeiro ponteiro era -1 e o segundo eh -17
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 17 como False por causa de c59
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (1 @ 2, c95), (-15 @ 2, c36), (-17 @ 2, c59)]
+
+clausula 83
+literais dela: [-1, -6, -7]
+literal da iteracao atual -1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -6
+reassistindo o literal nao assinalado -6
+
+clausula 86
+literais dela: [-1, 3, 16]
+literal da iteracao atual -1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 16
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [16, -1]
+primeiro ponteiro era -1 e o segundo eh 16
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 16 como True por causa de c86
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (1 @ 2, c95), (-15 @ 2, c36), (-17 @ 2, c59), (16 @ 2, c86)]
+
+clausula 82
+literais dela: [-14, 6, -1]
+literal da iteracao atual -14
+reassistindo o literal nao assinalado -14
+
+clausula 68
+literais dela: [-4, 17, -1]
+literal da iteracao atual -4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 17
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -1
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-1, -4]
+primeiro ponteiro era -1 e o segundo eh -4
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 4 como False por causa de c68
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (1 @ 2, c95), (-15 @ 2, c36), (-17 @ 2, c59), (16 @ 2, c86), (-4 @ 2, c68)]
+
+propagando -4 vamos alterar os ponteiros das clausulas que assistem 4
+clausulas [42, 49, 50] assistindo 4
+
+clausula 42
+literais dela: [3, 4, -15]
+literal da iteracao atual 3
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -15
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-15, 4]
+primeiro ponteiro era 4 e o segundo eh -15
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 49
+literais dela: [4, 9, -13]
+literal da iteracao atual 4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+reassistindo o literal nao assinalado 9
+
+clausula 50
+literais dela: [-7, 4, -3]
+literal da iteracao atual -7
+reassistindo o literal nao assinalado -7
+
+propagando 16 vamos alterar os ponteiros das clausulas que assistem -16
+clausulas [12, 61] assistindo -16
+
+clausula 12
+literais dela: [14, -16, 3]
+literal da iteracao atual 14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -16
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [14, -16]
+primeiro ponteiro era -16 e o segundo eh 14
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 14 como True por causa de c12
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (1 @ 2, c95), (-15 @ 2, c36), (-17 @ 2, c59), (16 @ 2, c86), (-4 @ 2, c68), (14 @ 2, c12)]
+
+clausula 61
+literais dela: [-16, -4, -2]
+literal da iteracao atual -16
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -4
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -2
+reassistindo o literal nao assinalado -2
+
+propagando 14 vamos alterar os ponteiros das clausulas que assistem -14
+clausulas [76, 81, 17, 82] assistindo -14
+
+clausula 76
+literais dela: [-14, -16, 20]
+literal da iteracao atual -14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -16
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 20
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-14, 20]
+primeiro ponteiro era -14 e o segundo eh 20
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 20 como True por causa de c76
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (1 @ 2, c95), (-15 @ 2, c36), (-17 @ 2, c59), (16 @ 2, c86), (-4 @ 2, c68), (14 @ 2, c12), (20 @ 2, c76)]
+
+clausula 81
+literais dela: [-14, 12, 13]
+literal da iteracao atual -14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 13
+reassistindo o literal nao assinalado 13
+
+clausula 17
+literais dela: [7, -14, 17]
+literal da iteracao atual 7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 17
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [7, -14]
+primeiro ponteiro era -14 e o segundo eh 7
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 7 como True por causa de c17
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (1 @ 2, c95), (-15 @ 2, c36), (-17 @ 2, c59), (16 @ 2, c86), (-4 @ 2, c68), (14 @ 2, c12), (20 @ 2, c76), (7 @ 2, c17)]
+
+clausula 82
+literais dela: [-14, 6, -1]
+literal da iteracao atual -14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 6
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -1
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-14, 6]
+primeiro ponteiro era -14 e o segundo eh 6
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 6 como True por causa de c82
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (1 @ 2, c95), (-15 @ 2, c36), (-17 @ 2, c59), (16 @ 2, c86), (-4 @ 2, c68), (14 @ 2, c12), (20 @ 2, c76), (7 @ 2, c17), (6 @ 2, c82)]
+
+propagando 6 vamos alterar os ponteiros das clausulas que assistem -6
+clausulas [19, 27, 83] assistindo -6
+
+clausula 19
+literais dela: [-6, 2, 17]
+literal da iteracao atual -6
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 2
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 17
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-6, 2]
+primeiro ponteiro era -6 e o segundo eh 2
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 2 como True por causa de c19
+[(10 @ 1, None), (-3 @ 2, None), (12 @ 2, c91), (18 @ 2, c57), (1 @ 2, c95), (-15 @ 2, c36), (-17 @ 2, c59), (16 @ 2, c86), (-4 @ 2, c68), (14 @ 2, c12), (20 @ 2, c76), (7 @ 2, c17), (6 @ 2, c82), (2 @ 2, c19)]
+
+clausula 27
+literais dela: [-1, -3, -6]
+literal da iteracao atual -1
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -6
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-3, -6]
+primeiro ponteiro era -6 e o segundo eh -3
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 83
+literais dela: [-1, -6, -7]
+literal da iteracao atual -1
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -6
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -7
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-6, -7]
+primeiro ponteiro era -6 e o segundo eh -7
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh False, conflito na clausula 83
+
+conflito na clausula c83
+lista de decision levels [2, 1]
+novo decision level 1
+clausula de conflito aprendida Clause(literals=[-9, -10, 3])
+removendo 3 dos assinalamentos
+removendo 12 dos assinalamentos
+removendo 18 dos assinalamentos
+removendo 1 dos assinalamentos
+removendo 15 dos assinalamentos
+removendo 17 dos assinalamentos
+removendo 16 dos assinalamentos
+removendo 4 dos assinalamentos
+removendo 14 dos assinalamentos
+removendo 20 dos assinalamentos
+removendo 7 dos assinalamentos
+removendo 6 dos assinalamentos
+removendo 2 dos assinalamentos
+assinalando 9 como False por causa de c96
+[(10 @ 1, None), (-9 @ 1, c96)]
+
+to unit propagate
+[-9]
+
+propagando -9 vamos alterar os ponteiros das clausulas que assistem 9
+clausulas [34, 71, 10, 6, 49] assistindo 9
+
+clausula 34
+literais dela: [3, 10, 9]
+literal da iteracao atual 3
+reassistindo o literal nao assinalado 3
+
+clausula 71
+literais dela: [9, -12, 7]
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+reassistindo o literal nao assinalado -12
+
+clausula 10
+literais dela: [1, 18, 9]
+literal da iteracao atual 1
+reassistindo o literal nao assinalado 1
+
+clausula 6
+literais dela: [17, -1, 9]
+literal da iteracao atual 17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -1
+reassistindo o literal nao assinalado -1
+
+clausula 49
+literais dela: [4, 9, -13]
+literal da iteracao atual 4
+reassistindo o literal nao assinalado 4
+
+M depois de propagar
+[(10 @ 1, None), (-9 @ 1, c96)]
+24 clausulas de 97 são satisfeitas, continuando...
+
+-------------------------------------------------
+M antes de decidir um novo literal
+[(10 @ 1, None), (-9 @ 1, c96)]
+
+lista de possiveis candidatos [-12, 3, -17, -3, -1, 17, 1, -5, -15, 16, -2, -7, 8, -8, 12, -4, -6, 7, 13, -13, -14, 18, 11, -11, 14, -19, 2, 5, 19, 20, 6, 15, -18, 4, -16, -20]
+
+decidindo: 12 vale False
+assinalando 12 como False por causa de cNone
+[(10 @ 1, None), (-9 @ 1, c96), (-12 @ 2, None)]
+decision level do novo literal 2
+
+to unit propagate
+[-12]
+
+propagando -12 vamos alterar os ponteiros das clausulas que assistem 12
+clausulas [30, 39, 91, 11, 47, 37, 2, 81] assistindo 12
+
+clausula 30
+literais dela: [-10, 12, -2]
+literal da iteracao atual -10
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -2
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [12, -2]
+primeiro ponteiro era 12 e o segundo eh -2
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 2 como False por causa de c30
+[(10 @ 1, None), (-9 @ 1, c96), (-12 @ 2, None), (-2 @ 2, c30)]
+
+clausula 39
+literais dela: [12, -9, 2]
+literal da iteracao atual 12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 91
+literais dela: [12, -10, 3]
+literal da iteracao atual 12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [12, -10, 3]
+primeiro ponteiro era 12 e o segundo eh -10
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh False, conflito na clausula 91
+
+conflito na clausula c91
+lista de decision levels [2, 1]
+novo decision level 1
+clausula de conflito aprendida Clause(literals=[12, -10, 3])
+removendo 12 dos assinalamentos
+removendo 2 dos assinalamentos
+assinalando 12 como True por causa de c91
+[(10 @ 1, None), (-9 @ 1, c96), (12 @ 1, c91)]
+
+to unit propagate
+[12]
+
+propagando 12 vamos alterar os ponteiros das clausulas que assistem -12
+clausulas [57, 92, 93, 92, 95, 71] assistindo -12
+
+clausula 57
+literais dela: [-12, -10, 18]
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 18
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-12, 18]
+primeiro ponteiro era -12 e o segundo eh 18
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 18 como True por causa de c57
+[(10 @ 1, None), (-9 @ 1, c96), (12 @ 1, c91), (18 @ 1, c57)]
+
+clausula 92
+literais dela: [-17, -12, -10, -5, 3, 1, -9]
+literal da iteracao atual -17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [1, -12, -17, -5, -9, -10, 3]
+primeiro ponteiro era -12 e o segundo eh 1
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 1 como True por causa de c92
+[(10 @ 1, None), (-9 @ 1, c96), (12 @ 1, c91), (18 @ 1, c57), (1 @ 1, c92)]
+
+clausula 93
+literais dela: [-17, -12, -10, 3, 1]
+literal da iteracao atual -17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 1
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [1, -12, -17, -10, 3]
+primeiro ponteiro era -12 e o segundo eh 1
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 92
+literais dela: [-17, -12, -10, -5, 3, 1, -9]
+literal da iteracao atual -17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [1, -12, -17, -5, -9, -10, 3]
+primeiro ponteiro era -12 e o segundo eh 1
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 95
+literais dela: [-12, -18, -10, 3, 1, -9]
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -18
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [1, -12, -9, -10, 3, -18]
+primeiro ponteiro era -12 e o segundo eh 1
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 71
+literais dela: [9, -12, 7]
+literal da iteracao atual 9
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 7
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-12, 7]
+primeiro ponteiro era -12 e o segundo eh 7
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 7 como True por causa de c71
+[(10 @ 1, None), (-9 @ 1, c96), (12 @ 1, c91), (18 @ 1, c57), (1 @ 1, c92), (7 @ 1, c71)]
+
+propagando 7 vamos alterar os ponteiros das clausulas que assistem -7
+clausulas [23, 40, 53, 54, 78, 83, 31, 50] assistindo -7
+
+clausula 23
+literais dela: [-7, 16, -18]
+literal da iteracao atual -7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 16
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -18
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [16, -7]
+primeiro ponteiro era -7 e o segundo eh 16
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 16 como True por causa de c23
+[(10 @ 1, None), (-9 @ 1, c96), (12 @ 1, c91), (18 @ 1, c57), (1 @ 1, c92), (7 @ 1, c71), (16 @ 1, c23)]
+
+clausula 40
+literais dela: [-7, 8, 3]
+literal da iteracao atual -7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+reassistindo o literal nao assinalado 3
+
+clausula 53
+literais dela: [17, -7, -19]
+literal da iteracao atual 17
+reassistindo o literal nao assinalado 17
+
+clausula 54
+literais dela: [-7, 19, 1]
+literal da iteracao atual -7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 19
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 1
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 78
+literais dela: [-7, 11, 10]
+literal da iteracao atual -7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 11
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 10
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 83
+literais dela: [-1, -6, -7]
+literal da iteracao atual -1
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -6
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -7
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-6, -7]
+primeiro ponteiro era -7 e o segundo eh -6
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 6 como False por causa de c83
+[(10 @ 1, None), (-9 @ 1, c96), (12 @ 1, c91), (18 @ 1, c57), (1 @ 1, c92), (7 @ 1, c71), (16 @ 1, c23), (-6 @ 1, c83)]
+
+clausula 31
+literais dela: [-2, -3, -7]
+literal da iteracao atual -2
+reassistindo o literal nao assinalado -2
+
+clausula 50
+literais dela: [-7, 4, -3]
+literal da iteracao atual -7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 4
+reassistindo o literal nao assinalado 4
+
+propagando -6 vamos alterar os ponteiros das clausulas que assistem 6
+clausulas [67, 73, 82, 48] assistindo 6
+
+clausula 67
+literais dela: [6, 19, 3]
+literal da iteracao atual 6
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 19
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+reassistindo o literal nao assinalado 3
+
+clausula 73
+literais dela: [14, 6, -18]
+literal da iteracao atual 14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 6
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -18
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [14, 6]
+primeiro ponteiro era 6 e o segundo eh 14
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 14 como True por causa de c73
+[(10 @ 1, None), (-9 @ 1, c96), (12 @ 1, c91), (18 @ 1, c57), (1 @ 1, c92), (7 @ 1, c71), (16 @ 1, c23), (-6 @ 1, c83), (14 @ 1, c73)]
+
+clausula 82
+literais dela: [-14, 6, -1]
+literal da iteracao atual -14
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 6
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -1
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-14, 6]
+primeiro ponteiro era 6 e o segundo eh -14
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh False, conflito na clausula 82
+
+conflito na clausula c82
+lista de decision levels [1]
+novo decision level 0
+clausula de conflito aprendida Clause(literals=[-17, -10, -5, 3])
+removendo 10 dos assinalamentos
+removendo 9 dos assinalamentos
+removendo 12 dos assinalamentos
+removendo 18 dos assinalamentos
+removendo 1 dos assinalamentos
+removendo 7 dos assinalamentos
+removendo 16 dos assinalamentos
+removendo 6 dos assinalamentos
+removendo 14 dos assinalamentos
+assinalando 17 como False por causa de c98
+[(-17 @ 0, c98)]
+
+to unit propagate
+[-17]
+
+propagando -17 vamos alterar os ponteiros das clausulas que assistem 17
+clausulas [6, 26, 53] assistindo 17
+
+clausula 6
+literais dela: [17, -1, 9]
+literal da iteracao atual 17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+reassistindo o literal nao assinalado 9
+
+clausula 26
+literais dela: [-1, -11, 17]
+literal da iteracao atual -1
+reassistindo o literal nao assinalado -1
+
+clausula 53
+literais dela: [17, -7, -19]
+literal da iteracao atual 17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -7
+reassistindo o literal nao assinalado -7
+
+M depois de propagar
+[(-17 @ 0, c98)]
+12 clausulas de 99 são satisfeitas, continuando...
+
+-------------------------------------------------
+M antes de decidir um novo literal
+[(-17 @ 0, c98)]
+
+lista de possiveis candidatos [3, -12, 10, -10, -3, -9, -5, -1, 1, 12, 9, -15, 16, -2, -7, 8, -8, -4, -6, 7, 13, -13, -14, 18, 11, -11, 14, -19, 2, 5, 19, 20, 6, 15, -18, 4, -16, -20]
+
+decidindo: 3 vale True
+assinalando 3 como True por causa de cNone
+[(-17 @ 0, c98), (3 @ 1, None)]
+decision level do novo literal 1
+
+to unit propagate
+[3]
+
+propagando 3 vamos alterar os ponteiros das clausulas que assistem -3
+clausulas [9, 15, 27, 31, 51, 69, 89, 62, 84, 58, 50] assistindo -3
+
+clausula 9
+literais dela: [-3, -12, -8]
+literal da iteracao atual -3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+reassistindo o literal nao assinalado -12
+
+clausula 15
+literais dela: [-3, -8, 5]
+literal da iteracao atual -3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 5
+reassistindo o literal nao assinalado 5
+
+clausula 27
+literais dela: [-1, -3, -6]
+literal da iteracao atual -1
+reassistindo o literal nao assinalado -1
+
+clausula 31
+literais dela: [-2, -3, -7]
+literal da iteracao atual -2
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -7
+reassistindo o literal nao assinalado -7
+
+clausula 51
+literais dela: [-3, 18, 17]
+literal da iteracao atual -3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 18
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 17
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-3, 18]
+primeiro ponteiro era -3 e o segundo eh 18
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 18 como True por causa de c51
+[(-17 @ 0, c98), (3 @ 1, None), (18 @ 1, c51)]
+
+clausula 69
+literais dela: [-6, -3, 18]
+literal da iteracao atual -6
+reassistindo o literal nao assinalado -6
+
+clausula 89
+literais dela: [-3, -17, -19]
+literal da iteracao atual -3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -17
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 62
+literais dela: [-13, 10, -3]
+literal da iteracao atual -13
+reassistindo o literal nao assinalado -13
+
+clausula 84
+literais dela: [-2, -13, -3]
+literal da iteracao atual -2
+reassistindo o literal nao assinalado -2
+
+clausula 58
+literais dela: [-12, -19, -3]
+literal da iteracao atual -12
+reassistindo o literal nao assinalado -12
+
+clausula 50
+literais dela: [-7, 4, -3]
+literal da iteracao atual -7
+reassistindo o literal nao assinalado -7
+
+propagando 18 vamos alterar os ponteiros das clausulas que assistem -18
+clausulas [95] assistindo -18
+
+clausula 95
+literais dela: [-12, -18, -10, 3, 1, -9]
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -18
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [1, -12, -9, -10, 3, -18]
+primeiro ponteiro era -18 e o segundo eh -12
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 12 como False por causa de c95
+[(-17 @ 0, c98), (3 @ 1, None), (18 @ 1, c51), (-12 @ 1, c95)]
+
+propagando -12 vamos alterar os ponteiros das clausulas que assistem 12
+clausulas [30, 91, 11, 47, 37, 2, 81, 91] assistindo 12
+
+clausula 30
+literais dela: [-10, 12, -2]
+literal da iteracao atual -10
+reassistindo o literal nao assinalado -10
+
+clausula 91
+literais dela: [12, -10, 3]
+literal da iteracao atual 12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [12, -10, 3]
+primeiro ponteiro era 12 e o segundo eh -10
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 10 como False por causa de c91
+[(-17 @ 0, c98), (3 @ 1, None), (18 @ 1, c51), (-12 @ 1, c95), (-10 @ 1, c91)]
+
+clausula 11
+literais dela: [1, 7, 12]
+literal da iteracao atual 1
+reassistindo o literal nao assinalado 1
+
+clausula 47
+literais dela: [12, 16, -8]
+literal da iteracao atual 12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 16
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -8
+reassistindo o literal nao assinalado -8
+
+clausula 37
+literais dela: [16, 9, 12]
+literal da iteracao atual 16
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+reassistindo o literal nao assinalado 9
+
+clausula 2
+literais dela: [13, 12, 2]
+literal da iteracao atual 13
+reassistindo o literal nao assinalado 13
+
+clausula 81
+literais dela: [-14, 12, 13]
+literal da iteracao atual -14
+reassistindo o literal nao assinalado -14
+
+clausula 91
+literais dela: [12, -10, 3]
+literal da iteracao atual 12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [12, -10, 3]
+primeiro ponteiro era 12 e o segundo eh -10
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+propagando -10 vamos alterar os ponteiros das clausulas que assistem 10
+clausulas [5, 13, 14, 34, 43, 45, 62, 77, 85, 88, 25, 46, 28, 75, 78] assistindo 10
+
+clausula 5
+literais dela: [10, 19, -9]
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 19
+reassistindo o literal nao assinalado 19
+
+clausula 13
+literais dela: [10, 9, -8]
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+reassistindo o literal nao assinalado 9
+
+clausula 14
+literais dela: [10, 16, 8]
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 16
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 8
+reassistindo o literal nao assinalado 8
+
+clausula 34
+literais dela: [3, 10, 9]
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 9
+reassistindo o literal nao assinalado 9
+
+clausula 43
+literais dela: [10, -13, -4]
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -13
+reassistindo o literal nao assinalado -13
+
+clausula 45
+literais dela: [-2, 10, 8]
+literal da iteracao atual -2
+reassistindo o literal nao assinalado -2
+
+clausula 62
+literais dela: [-13, 10, -3]
+literal da iteracao atual -13
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -3
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-13, 10]
+primeiro ponteiro era 10 e o segundo eh -13
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 13 como False por causa de c62
+[(-17 @ 0, c98), (3 @ 1, None), (18 @ 1, c51), (-12 @ 1, c95), (-10 @ 1, c91), (-13 @ 1, c62)]
+
+clausula 77
+literais dela: [13, 10, 15]
+literal da iteracao atual 13
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 15
+reassistindo o literal nao assinalado 15
+
+clausula 85
+literais dela: [15, 10, -8]
+literal da iteracao atual 15
+reassistindo o literal nao assinalado 15
+
+clausula 88
+literais dela: [1, 20, 10]
+literal da iteracao atual 1
+reassistindo o literal nao assinalado 1
+
+clausula 25
+literais dela: [-17, -5, 10]
+literal da iteracao atual -17
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 46
+literais dela: [17, -5, 10]
+literal da iteracao atual 17
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 10
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [10, -5]
+primeiro ponteiro era 10 e o segundo eh -5
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 5 como False por causa de c46
+[(-17 @ 0, c98), (3 @ 1, None), (18 @ 1, c51), (-12 @ 1, c95), (-10 @ 1, c91), (-13 @ 1, c62), (-5 @ 1, c46)]
+
+clausula 28
+literais dela: [-15, 7, 10]
+literal da iteracao atual -15
+reassistindo o literal nao assinalado -15
+
+clausula 75
+literais dela: [11, -6, 10]
+literal da iteracao atual 11
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -6
+reassistindo o literal nao assinalado -6
+
+clausula 78
+literais dela: [-7, 11, 10]
+literal da iteracao atual -7
+reassistindo o literal nao assinalado -7
+
+propagando -5 vamos alterar os ponteiros das clausulas que assistem 5
+clausulas [48, 87, 52, 15] assistindo 5
+
+clausula 48
+literais dela: [5, -12, 6]
+literal da iteracao atual 5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 87
+literais dela: [-17, 5, -12]
+literal da iteracao atual -17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 52
+literais dela: [17, 18, 5]
+literal da iteracao atual 17
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 18
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 5
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [18, 5]
+primeiro ponteiro era 5 e o segundo eh 18
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 15
+literais dela: [-3, -8, 5]
+literal da iteracao atual -3
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual -8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 5
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-8, 5]
+primeiro ponteiro era 5 e o segundo eh -8
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 8 como False por causa de c15
+[(-17 @ 0, c98), (3 @ 1, None), (18 @ 1, c51), (-12 @ 1, c95), (-10 @ 1, c91), (-13 @ 1, c62), (-5 @ 1, c46), (-8 @ 1, c15)]
+
+propagando -8 vamos alterar os ponteiros das clausulas que assistem 8
+clausulas [0, 22, 40, 44, 55, 66, 45, 14] assistindo 8
+
+clausula 0
+literais dela: [8, 1, -15]
+literal da iteracao atual 8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 1
+reassistindo o literal nao assinalado 1
+
+clausula 22
+literais dela: [8, -9, 11]
+literal da iteracao atual 8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+reassistindo o literal nao assinalado -9
+
+clausula 40
+literais dela: [-7, 8, 3]
+literal da iteracao atual -7
+reassistindo o literal nao assinalado -7
+
+clausula 44
+literais dela: [-15, 8, 19]
+literal da iteracao atual -15
+reassistindo o literal nao assinalado -15
+
+clausula 55
+literais dela: [13, 8, 16]
+literal da iteracao atual 13
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 8
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 16
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [8, 16]
+primeiro ponteiro era 8 e o segundo eh 16
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 16 como True por causa de c55
+[(-17 @ 0, c98), (3 @ 1, None), (18 @ 1, c51), (-12 @ 1, c95), (-10 @ 1, c91), (-13 @ 1, c62), (-5 @ 1, c46), (-8 @ 1, c15), (16 @ 1, c55)]
+
+clausula 66
+literais dela: [-12, 8, -15]
+literal da iteracao atual -12
+literal ja assinalado
+literal assinalado como True e nao assitido por outro, passando a assistir ele
+
+clausula 45
+literais dela: [-2, 10, 8]
+literal da iteracao atual -2
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 10
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 8
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [8, -2]
+primeiro ponteiro era 8 e o segundo eh -2
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 2 como False por causa de c45
+[(-17 @ 0, c98), (3 @ 1, None), (18 @ 1, c51), (-12 @ 1, c95), (-10 @ 1, c91), (-13 @ 1, c62), (-5 @ 1, c46), (-8 @ 1, c15), (16 @ 1, c55), (-2 @ 1, c45)]
+
+clausula 14
+literais dela: [10, 16, 8]
+literal da iteracao atual 10
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 16
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 8
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [8, 16]
+primeiro ponteiro era 8 e o segundo eh 16
+valor do literal que ele assiste eh True
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+propagando -2 vamos alterar os ponteiros das clausulas que assistem 2
+clausulas [19, 24, 2, 39] assistindo 2
+
+clausula 19
+literais dela: [-6, 2, 17]
+literal da iteracao atual -6
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 2
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 17
+literal ja assinalado
+assinalado como False, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-6, 2]
+primeiro ponteiro era 2 e o segundo eh -6
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 6 como False por causa de c19
+[(-17 @ 0, c98), (3 @ 1, None), (18 @ 1, c51), (-12 @ 1, c95), (-10 @ 1, c91), (-13 @ 1, c62), (-5 @ 1, c46), (-8 @ 1, c15), (16 @ 1, c55), (-2 @ 1, c45), (-6 @ 1, c19)]
+
+clausula 24
+literais dela: [-14, 2, 18]
+literal da iteracao atual -14
+reassistindo o literal nao assinalado -14
+
+clausula 2
+literais dela: [13, 12, 2]
+literal da iteracao atual 13
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 12
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 2
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [13, 2]
+primeiro ponteiro era 2 e o segundo eh 13
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh False, conflito na clausula 2
+
+conflito na clausula c2
+lista de decision levels [1, 0]
+novo decision level 0
+clausula de conflito aprendida Clause(literals=[-3, 17, -10, 3, 1, -9])
+removendo 3 dos assinalamentos
+removendo 18 dos assinalamentos
+removendo 12 dos assinalamentos
+removendo 10 dos assinalamentos
+removendo 13 dos assinalamentos
+removendo 5 dos assinalamentos
+removendo 8 dos assinalamentos
+removendo 16 dos assinalamentos
+removendo 2 dos assinalamentos
+removendo 6 dos assinalamentos
+assinalando 3 como False por causa de c99
+[(-17 @ 0, c98), (-3 @ 0, c99)]
+
+to unit propagate
+[-3]
+
+propagando -3 vamos alterar os ponteiros das clausulas que assistem 3
+clausulas [91, 92, 93, 92, 95, 96, 34, 91, 40, 67, 98, 99] assistindo 3
+
+clausula 91
+literais dela: [12, -10, 3]
+literal da iteracao atual 12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [12, -10, 3]
+primeiro ponteiro era 3 e o segundo eh -10
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 10 como False por causa de c91
+[(-17 @ 0, c98), (-3 @ 0, c99), (-10 @ 0, c91)]
+
+clausula 92
+literais dela: [-17, -12, -10, -5, 3, 1, -9]
+literal da iteracao atual -17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [1, -12, -17, -5, -9, -10, 3]
+primeiro ponteiro era 3 e o segundo eh -12
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 12 como False por causa de c92
+[(-17 @ 0, c98), (-3 @ 0, c99), (-10 @ 0, c91), (-12 @ 0, c92)]
+
+clausula 93
+literais dela: [-17, -12, -10, 3, 1]
+literal da iteracao atual -17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 1
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [1, -12, -17, -10, 3]
+primeiro ponteiro era 3 e o segundo eh -12
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 92
+literais dela: [-17, -12, -10, -5, 3, 1, -9]
+literal da iteracao atual -17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [1, -12, -17, -5, -9, -10, 3]
+primeiro ponteiro era 3 e o segundo eh -12
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 95
+literais dela: [-12, -18, -10, 3, 1, -9]
+literal da iteracao atual -12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -18
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [1, -12, -9, -10, 3, -18]
+primeiro ponteiro era 3 e o segundo eh -12
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 96
+literais dela: [-9, -10, 3]
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-9, -10, 3]
+primeiro ponteiro era 3 e o segundo eh -10
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 34
+literais dela: [3, 10, 9]
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 10
+literal ja assinalado
+assinalado como False, continuando
+literal da iteracao atual 9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [9, 3]
+primeiro ponteiro era 3 e o segundo eh 9
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 9 como True por causa de c34
+[(-17 @ 0, c98), (-3 @ 0, c99), (-10 @ 0, c91), (-12 @ 0, c92), (9 @ 0, c34)]
+
+clausula 91
+literais dela: [12, -10, 3]
+literal da iteracao atual 12
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [12, -10, 3]
+primeiro ponteiro era 3 e o segundo eh -10
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh True, pula a clausula
+
+clausula 40
+literais dela: [-7, 8, 3]
+literal da iteracao atual -7
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 8
+reassistindo o literal nao assinalado 8
+
+clausula 67
+literais dela: [6, 19, 3]
+literal da iteracao atual 6
+reassistindo o literal nao assinalado 6
+
+clausula 98
+literais dela: [-17, -10, -5, 3]
+literal da iteracao atual -17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -5
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [-17, -5, -10, 3]
+primeiro ponteiro era 3 e o segundo eh -5
+valor do literal que ele assiste eh None
+segundo ponteiro assistindo variable como None
+assinalando 5 como False por causa de c98
+[(-17 @ 0, c98), (-3 @ 0, c99), (-10 @ 0, c91), (-12 @ 0, c92), (9 @ 0, c34), (-5 @ 0, c98)]
+
+clausula 99
+literais dela: [-3, 17, -10, 3, 1, -9]
+literal da iteracao atual -3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 17
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -10
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 3
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual 1
+literal ja assistido por outro ponteiro da clausula, continuando
+literal da iteracao atual -9
+literal ja assistido por outro ponteiro da clausula, continuando
+nao foi possivel mover o ponteiro dessa clausula
+lista dos literais assistidos por essa clausula [1, 17, -3, -9, -10, 3]
+primeiro ponteiro era 3 e o segundo eh 17
+valor do literal que ele assiste eh False
+segundo ponteiro assistindo variavel assinalada
+variavel eh False, conflito na clausula 99
+conflito no decision level 0, return UNSAT
+s UNSATISFIABLE
+10.793812980409712 ms
