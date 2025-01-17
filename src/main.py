@@ -7,7 +7,7 @@ from helpers import print_assignment
 
 
 def main():
-    if len(sys.argv) != 2:
+    if len(sys.argv) != 3:
         print("Invalid CLI format.")
         print(
             "Expected usage:",

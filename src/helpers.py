@@ -29,6 +29,9 @@ class Clause:
 class Formula:
     clauses: list[Clause]
 
+    def __len__(self):
+        return len(self.clauses)
+
 
 @dataclass
 class Assignment:

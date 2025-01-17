@@ -68,10 +68,8 @@ class CDCL:
             if count > 0 and literal_count[lit.negation()] == 0:
                 if self.assignment[lit.variable] == None:
                     self.assign(lit.variable, not lit.is_negated, None)
-                    to_propagate.append(lit)
+                    to_propagate.insert(0, lit)
 
-        print("to unit propagate")
-        print(to_propagate)
         return to_propagate
 
     def solve_unit_clauses(self) -> Optional[list[Literal]]:
@@ -83,7 +81,7 @@ class CDCL:
                 literal = clause.literals[0]
                 if self.assignment[literal.variable] == None:
                     self.assign(literal.variable, not literal.is_negated, None)
-                    to_propagate.append((literal))
+                    to_propagate.insert(0, literal)
                 else:
                     assignment = self.assignment[literal.variable]
                     if (assignment and literal.is_negated) or (
@@ -92,8 +90,6 @@ class CDCL:
                         # two conflitant unit clauses
                         return None
 
-        print("to unit propagate")
-        print(to_propagate)
         return to_propagate
 
     # can be improved I guess
@@ -199,7 +195,7 @@ class CDCL:
                             not other_watched_literal.is_negated,
                             clause,
                         )
-                        to_propagate.append(other_watched_literal)
+                        to_propagate.insert(0, other_watched_literal)
                     else:
                         print("segundo ponteiro assistindo variavel assinalada")
                         # second pointer is watching a assigned literal
@@ -398,8 +394,7 @@ class CDCL:
                     #             not literal.is_negated,
                     #             self.formula.clauses.index(conflict_clause),
                     #         )
-                    #         to_propagate = []
-                    #         to_propagate.append(literal)
+                    #         to_propagate.insert(0, literal)
                     #         break
                 else:
                     # propagated, deciding new variable in the next iteration

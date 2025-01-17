@@ -6,6 +6,7 @@ from helpers import Clause, Formula, Literal
 def parse_dimacs_instance(instance: str) -> Optional[tuple[int, int, Formula]]:
     print("parsing:", instance)
 
+    current_clause = []
     variable_num: int = 0
     clause_num: int = 0
     formula = Formula([])
@@ -27,22 +28,34 @@ def parse_dimacs_instance(instance: str) -> Optional[tuple[int, int, Formula]]:
                 variable_num = int(problem[2])
                 clause_num = int(problem[3])
             case _:
-                match l:
-                    case "0":
-                        break
-                    case _:
-                        parsed = [x for x in l.split(" ") if x != ""]
-                        formula.clauses.append(
-                            Clause(
-                                [
-                                    (
-                                        Literal(abs(int(x)), False)
-                                        if int(x) > 0
-                                        else Literal(abs(int(x)), True)
-                                    )
-                                    for x in parsed[:-1]
-                                ]
+                if l[0] == "0":
+                    break
+
+                parsed = [x for x in l.split(" ") if x != ""]
+                clause_ended = parsed[-1]
+                if int(clause_ended) == 0:
+                    current_clause.extend(
+                        [
+                            (
+                                Literal(abs(int(x)), False)
+                                if int(x) > 0
+                                else Literal(abs(int(x)), True)
                             )
-                        )
+                            for x in parsed[:-1]
+                        ]
+                    )
+                    formula.clauses.append(Clause(current_clause))
+                    current_clause = []
+                else:
+                    current_clause.extend(
+                        [
+                            (
+                                Literal(abs(int(x)), False)
+                                if int(x) > 0
+                                else Literal(abs(int(x)), True)
+                            )
+                            for x in parsed[:]
+                        ]
+                    )
 
     return variable_num, clause_num, formula
