@@ -24,6 +24,12 @@ class Clause:
     def __len__(self):
         return len(self.literals)
 
+    def __contains__(self, literal: int):
+        literal_aux = Literal(literal, False)
+        return (literal_aux in self.literals) or (
+            literal_aux.negation() in self.literals
+        )
+
 
 @dataclass
 class Formula:
@@ -39,6 +45,9 @@ class Assignment:
     literal: int
     value: bool
     antecedent: Optional[int]
+
+    def __contains__(self, literal: int):
+        return literal == self.literal
 
     def __repr__(self):
         literal = "-" + str(self.literal) if self.value == False else str(self.literal)

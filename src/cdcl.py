@@ -262,24 +262,54 @@ class CDCL:
         self.decision_level = new_decision_level
 
     def conflict_analysis(self, clause: int) -> tuple[int, Optional[Clause]]:
+        seen = []
         learned_clause = self.formula.clauses[clause]
-        literals = []
+        print("learned clause", learned_clause)
+        print("decision level", self.decision_level)
+        print("assignment", self.M)
+        literals = [
+            assignment
+            for assignment in self.M
+            if assignment.literal in learned_clause
+            and assignment.decision_level == self.decision_level
+            and assignment.antecedent != None
+        ]
+        print(literals)
 
-        for literal in learned_clause.literals:
-            for assignment in self.M:
-                if (
-                    assignment.decision_level == self.decision_level
-                    and assignment.literal == literal.variable
-                ):
-                    literals.append(assignment)
+        while len(literals) != 0:
+            literal = literals.pop()
+            if literal in seen:
+                continue
+            seen.append(literal)
+            print(literal)
+            print("literals after pop", literals)
+            print("c1", learned_clause)
+            print("c2", self.formula.clauses[literal.antecedent])
+            learned_clause = self.resolution(
+                learned_clause,
+                self.formula.clauses[literal.antecedent],
+                Literal(literal.literal, not literal.value),
+            )
+            print("result", learned_clause)
+            literals = [
+                assignment
+                for assignment in self.M
+                if assignment.literal in learned_clause
+                and assignment.decision_level == self.decision_level
+                and assignment.antecedent != None
+            ]
+            print("new literals", literals)
+            # input()
 
-        for literal in literals:
-            if literal.antecedent != None:
-                learned_clause = self.resolution(
-                    learned_clause,
-                    self.formula.clauses[literal.antecedent],
-                    Literal(literal.literal, not literal.value),
-                )
+        print("final learned clause", learned_clause)
+        print(
+            [
+                assignment
+                for assignment in self.M
+                if assignment.literal in learned_clause
+            ]
+        )
+        # input()
 
         # update activity for literals in the learned clause
         for literal in learned_clause.literals:
@@ -296,14 +326,14 @@ class CDCL:
                     [
                         assignment.decision_level
                         for assignment in self.M
-                        if Literal(assignment.literal, assignment.value)
-                        in learned_clause.literals
+                        if assignment.literal in learned_clause
                     ]
                 )
             ),
             reverse=True,
         )
         print(f"lista de decision levels {decision_levels}")
+        # input()
 
         if len(decision_levels) < 2:
             return 0, learned_clause
@@ -376,18 +406,17 @@ class CDCL:
                     print(f"novo decision level {new_decision_level}")
                     print(f"clausula de conflito aprendida {conflict_clause}")
 
-                    if conflict_clause != None:
-                        self.learn(conflict_clause)
-                        self.backjump(new_decision_level)
-                        for literal in conflict_clause.literals:
-                            if self.assignment[literal.variable] == None:
-                                self.assign(
-                                    literal.variable,
-                                    not literal.is_negated,
-                                    self.formula.clauses.index(conflict_clause),
-                                )
-                                to_propagate.insert(0, literal)
-                                break
+                    self.learn(conflict_clause)
+                    self.backjump(new_decision_level)
+                    for literal in conflict_clause.literals:
+                        if self.assignment[literal.variable] == None:
+                            self.assign(
+                                literal.variable,
+                                not literal.is_negated,
+                                self.formula.clauses.index(conflict_clause),
+                            )
+                            to_propagate.insert(0, literal)
+                            break
                 else:
                     # propagated, deciding new variable in the next iteration
                     print("\nM depois de propagar")
