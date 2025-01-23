@@ -23,10 +23,11 @@ class CDCL:
         # initialize the 2-watched literals data structure
         self.watched_literals: dict[Literal, list[int]] = defaultdict(list)
         for clause_index, clause in enumerate(formula.clauses):
-            if len(clause) < 2:
-                continue
-            self.watched_literals[clause.literals[0]].append(clause_index)
-            self.watched_literals[clause.literals[1]].append(clause_index)
+            if len(clause) == 1:
+                self.watched_literals[clause.literals[0]].append(clause_index)
+            else:
+                self.watched_literals[clause.literals[0]].append(clause_index)
+                self.watched_literals[clause.literals[1]].append(clause_index)
 
         # VSIDS
         self.activity: dict[Literal, float] = defaultdict(int)
@@ -37,8 +38,6 @@ class CDCL:
         for clause in self.formula.clauses:
             for literal in clause.literals:
                 self.activity[literal] += self.increment
-
-        self.clauses_learned_count = 0
 
     def apply_decay(self):
         for variable in self.activity:
@@ -73,7 +72,7 @@ class CDCL:
 
         return to_propagate
 
-    def solve_unit_clauses(self) -> Optional[list[Literal]]:
+    def solve_unit_clauses(self) -> list[Literal]:
         print("\nclausulas com apenas um literal...")
         to_propagate = []
 
@@ -83,20 +82,12 @@ class CDCL:
                 if self.assignment[literal.variable] == None:
                     self.assign(literal.variable, not literal.is_negated, None)
                     to_propagate.insert(0, literal)
-                else:
-                    assignment = self.assignment[literal.variable]
-                    if (assignment and literal.is_negated) or (
-                        not assignment and not literal.is_negated
-                    ):
-                        # two conflitant unit clauses
-                        return None
 
         return to_propagate
 
     # can be improved I guess
     def all_clauses_are_satisfied(self) -> bool:
         satisfied = 0
-
         for clause in self.formula.clauses:
             for literal in clause.literals:
                 assignment = self.assignment[literal.variable]
@@ -175,6 +166,11 @@ class CDCL:
                         for key, clauses_watching in self.watched_literals.items()
                         if clause in clauses_watching
                     ]
+
+                    # conflict in an unit clause
+                    if len(literals) == 1:
+                        return 1, clause
+
                     print(f"lista dos literais assistidos por essa clausula {literals}")
 
                     # get the other pointer
@@ -241,13 +237,22 @@ class CDCL:
     def learn(self, clause: Clause):
         # append in the formula
         self.formula.clauses.append(clause)
-        self.clauses_learned_count += 1
 
         # update the watch pointers
         clause_index = self.formula.clauses.index(clause)
-        if len(clause.literals) >= 2:
+        literals = []
+        for assignment in self.M:
             for literal in clause.literals:
+                if assignment.literal == literal.variable:
+                    literals.append((assignment.decision_level, literal))
+        literals.sort(key=lambda x: x[0], reverse=True)
+
+        literals_watched = 0
+
+        for literal in literals:
+            if literals_watched < 2:
                 self.watched_literals[literal].append(clause_index)
+                literals_watched += 1
 
     def backjump(self, new_decision_level: int):
         print("fazendo o backjump")
@@ -261,12 +266,16 @@ class CDCL:
 
         self.decision_level = new_decision_level
 
-    def conflict_analysis(self, clause: int) -> tuple[int, Optional[Clause]]:
+        return to_remove[0]
+
+    def conflict_analysis(self, clause: int) -> tuple[int, Clause]:
         seen = []
+
         learned_clause = self.formula.clauses[clause]
         print("learned clause", learned_clause)
         print("decision level", self.decision_level)
         print("assignment", self.M)
+        print("aaa", self.assignment[22])
         literals = [
             assignment
             for assignment in self.M
@@ -309,7 +318,6 @@ class CDCL:
                 if assignment.literal in learned_clause
             ]
         )
-        # input()
 
         # update activity for literals in the learned clause
         for literal in learned_clause.literals:
@@ -345,10 +353,6 @@ class CDCL:
         to_propagate = []
         # to_propagate.extend(self.solve_only_negative_or_positive_literals())
         literals_from_unit_clauses = self.solve_unit_clauses()
-
-        # two conflitant unit clauses
-        if literals_from_unit_clauses == None:
-            return None
 
         to_propagate.extend(literals_from_unit_clauses)
 
@@ -408,6 +412,7 @@ class CDCL:
 
                     self.learn(conflict_clause)
                     self.backjump(new_decision_level)
+                    # TODO: check here
                     for literal in conflict_clause.literals:
                         if self.assignment[literal.variable] == None:
                             self.assign(
@@ -415,7 +420,8 @@ class CDCL:
                                 not literal.is_negated,
                                 self.formula.clauses.index(conflict_clause),
                             )
-                            to_propagate.insert(0, literal)
+                            to_propagate = []
+                            to_propagate.append(literal)
                             break
                 else:
                     # propagated, deciding new variable in the next iteration
