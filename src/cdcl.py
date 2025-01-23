@@ -1,4 +1,3 @@
-import sys
 from collections import defaultdict
 from typing import Optional
 
@@ -44,18 +43,14 @@ class CDCL:
             self.activity[variable] *= self.decay_factor
 
     def assign(self, variable: int, value: bool, antecedent: Optional[int]):
-        print(f"assinalando {variable} como {value} por causa de c{antecedent}")
         self.M.append(Assignment(self.decision_level, variable, value, antecedent))
         self.assignment[variable] = value
-        print(self.M)
 
     def unassign(self, literal: int):
-        print(f"removendo {literal} dos assinalamentos")
         self.assignment[literal] = None
         self.M = [assignment for assignment in self.M if assignment.literal != literal]
 
     def solve_only_negative_or_positive_literals(self) -> list[Literal]:
-        print("\nliterais apenas positivos ou negativos na formula")
         literal_count = defaultdict(int)
         to_propagate = []
 
@@ -73,7 +68,6 @@ class CDCL:
         return to_propagate
 
     def solve_unit_clauses(self) -> list[Literal]:
-        print("\nclausulas com apenas um literal...")
         to_propagate = []
 
         for _, clause in enumerate(self.formula.clauses):
@@ -97,10 +91,6 @@ class CDCL:
                 ):
                     satisfied += 1
                     break
-
-        print(
-            f"{satisfied} clausulas de {len(self.formula.clauses)} são satisfeitas, continuando..."
-        )
         return satisfied == len(self.formula.clauses)
 
     def unit_propagation(
@@ -111,54 +101,37 @@ class CDCL:
             # for the clauses that are currently watching -literal
             literal = to_propagate.pop()
             negated_lit = literal.negation()
-            print(
-                f"\npropagando {literal} vamos alterar os ponteiros das clausulas que assistem {negated_lit}"
-            )
             clauses = list(self.watched_literals[negated_lit])
-            print(f"clausulas {clauses} assistindo {negated_lit}")
 
             for clause in clauses:
                 literals = self.formula.clauses[clause].literals
-                print(f"\nclausula {clause}")
-                print(f"literais dela: {literals}")
                 watched_literal_changed = False
                 for lit in literals:
-                    print(f"literal da iteracao atual {lit}")
                     if clause in self.watched_literals[lit]:
                         # literal already watched (by self or other pointer)
-                        print(
-                            "literal ja assistido por outro ponteiro da clausula, continuando"
-                        )
                         continue
 
                     if self.assignment[lit.variable] == None:
-                        print(f"reassistindo o literal nao assinalado {lit}")
                         # rewatch a non assigned literal
                         self.watched_literals[negated_lit].remove(clause)
                         self.watched_literals[lit].append(clause)
                         watched_literal_changed = True
                         break
                     else:
-                        print("literal ja assinalado")
                         assignment = self.assignment[lit.variable]
                         if (assignment and lit.is_negated) or (
                             not assignment and not lit.is_negated
                         ):
                             # falsified literal, skip
-                            print("assinalado como False, continuando")
                             continue
                         else:
                             # rewatch a True literal
-                            print(
-                                "literal assinalado como True e nao assitido por outro, passando a assistir ele"
-                            )
                             self.watched_literals[negated_lit].remove(clause)
                             self.watched_literals[lit].append(clause)
                             watched_literal_changed = True
                             break
 
                 if not watched_literal_changed:
-                    print("nao foi possivel mover o ponteiro dessa clausula")
                     # cannot find another literal to rewatch
                     # get the list of literals watched by that clause
                     literals = [
@@ -171,20 +144,11 @@ class CDCL:
                     if len(literals) == 1:
                         return 1, clause
 
-                    print(f"lista dos literais assistidos por essa clausula {literals}")
-
                     # get the other pointer
                     other_watched_literal = (
                         literals[0] if literals[1] == negated_lit else literals[1]
                     )
-                    print(
-                        f"primeiro ponteiro era {negated_lit} e o segundo eh {other_watched_literal}"
-                    )
-                    print(
-                        f"valor do literal que ele assiste eh {self.assignment[other_watched_literal.variable]}"
-                    )
                     if self.assignment[other_watched_literal.variable] == None:
-                        print("segundo ponteiro assistindo variable como None")
                         # first pointer is watching False and second None
                         # it means that this clause is an unit clause, propagate too
                         self.assign(
@@ -194,19 +158,16 @@ class CDCL:
                         )
                         to_propagate.insert(0, other_watched_literal)
                     else:
-                        print("segundo ponteiro assistindo variavel assinalada")
                         # second pointer is watching a assigned literal
                         assignment = self.assignment[other_watched_literal.variable]
                         if (assignment and not other_watched_literal.is_negated) or (
                             not assignment and other_watched_literal.is_negated
                         ):
                             # True literal, clause is satisfied, it's fine
-                            print("variavel eh True, pula a clausula")
                             continue
                         else:
                             # False literal too and can't change the pointer
                             # it means that we have a conflict
-                            print(f"variavel eh False, conflito na clausula {clause}")
                             return 1, clause
 
         return 0, None
@@ -223,8 +184,6 @@ class CDCL:
 
         # sort by the activity map value
         candidates.sort(key=lambda i: self.activity[i], reverse=True)
-
-        print(f"\nlista de possiveis candidatos {candidates}")
 
         # get the candidate with highest activity
         candidate = candidates[0]
@@ -255,7 +214,6 @@ class CDCL:
                 literals_watched += 1
 
     def backjump(self, new_decision_level: int):
-        print("fazendo o backjump")
         to_remove = [
             assignment
             for assignment in self.M
@@ -272,10 +230,6 @@ class CDCL:
         seen = []
 
         learned_clause = self.formula.clauses[clause]
-        print("learned clause", learned_clause)
-        print("decision level", self.decision_level)
-        print("assignment", self.M)
-        print("aaa", self.assignment[22])
         literals = [
             assignment
             for assignment in self.M
@@ -283,23 +237,17 @@ class CDCL:
             and assignment.decision_level == self.decision_level
             and assignment.antecedent != None
         ]
-        print(literals)
 
         while len(literals) != 0:
             literal = literals.pop()
             if literal in seen:
                 continue
             seen.append(literal)
-            print(literal)
-            print("literals after pop", literals)
-            print("c1", learned_clause)
-            print("c2", self.formula.clauses[literal.antecedent])
             learned_clause = self.resolution(
                 learned_clause,
                 self.formula.clauses[literal.antecedent],
                 Literal(literal.literal, not literal.value),
             )
-            print("result", learned_clause)
             literals = [
                 assignment
                 for assignment in self.M
@@ -307,17 +255,6 @@ class CDCL:
                 and assignment.decision_level == self.decision_level
                 and assignment.antecedent != None
             ]
-            print("new literals", literals)
-            # input()
-
-        print("final learned clause", learned_clause)
-        print(
-            [
-                assignment
-                for assignment in self.M
-                if assignment.literal in learned_clause
-            ]
-        )
 
         # update activity for literals in the learned clause
         for literal in learned_clause.literals:
@@ -340,8 +277,6 @@ class CDCL:
             ),
             reverse=True,
         )
-        print(f"lista de decision levels {decision_levels}")
-        # input()
 
         if len(decision_levels) < 2:
             return 0, learned_clause
@@ -356,63 +291,32 @@ class CDCL:
 
         to_propagate.extend(literals_from_unit_clauses)
 
-        print("\nafter purify")
-        print(self.M)
-
-        print("\n-------------------------------------------------")
-
-        print("\npropagating after purify")
-        print("to unit propagate")
-        print(to_propagate)
-
         status, _ = self.unit_propagation(to_propagate)
         # conflict, formula is UNSAT
         if status == 1:
-            print(self.M)
             return None
 
-        print("\nafter propagating")
-        print(self.M)
-
-        print("\n-------------------------------------------------")
-
-        print("\nstarting the loop")
         while not self.all_clauses_are_satisfied():
-            print("\n-------------------------------------------------")
-            print("M antes de decidir um novo literal")
-            print(self.M)
-
             literal, value = self.choose_literal()
-            print("\ndecidindo:", literal.variable, "vale", value)
             self.decision_level += 1
             self.assign(literal.variable, value, None)
             to_propagate.append(literal)
-            print(f"decision level do novo literal {self.decision_level}")
 
             while True:
-                print("\nto unit propagate")
-                print(to_propagate)
                 status, clause_index = self.unit_propagation(to_propagate)
                 if status == 1 and clause_index != None:
                     if self.decision_level == 0:
                         # conflict and current decision level is 0
                         # return UNSAT
-                        print("conflito no decision level 0, return UNSAT")
                         return None
-
-                    print("\nconflito na clausula c{}".format(clause_index))
 
                     # conflict found and decision level != 0, do conflict analysis
                     new_decision_level, conflict_clause = self.conflict_analysis(
                         clause_index
                     )
 
-                    print(f"novo decision level {new_decision_level}")
-                    print(f"clausula de conflito aprendida {conflict_clause}")
-
                     self.learn(conflict_clause)
                     self.backjump(new_decision_level)
-                    # TODO: check here
                     for literal in conflict_clause.literals:
                         if self.assignment[literal.variable] == None:
                             self.assign(
@@ -425,8 +329,6 @@ class CDCL:
                             break
                 else:
                     # propagated, deciding new variable in the next iteration
-                    print("\nM depois de propagar")
-                    print(self.M)
                     break
 
         return self.M
