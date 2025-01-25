@@ -1,0 +1,5 @@
+c CaDiCaL
+c https://github.com/arminbiere/cadical/tree/master/test/cnf
+c 
+p cnf 0 1
+0

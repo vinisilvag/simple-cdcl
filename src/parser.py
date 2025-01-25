@@ -4,8 +4,6 @@ from helpers import Clause, Formula, Literal
 
 
 def parse_dimacs_instance(instance: str) -> Optional[tuple[int, int, Formula]]:
-    print("parsing:", instance)
-
     current_clause = []
     variable_num: int = 0
     clause_num: int = 0

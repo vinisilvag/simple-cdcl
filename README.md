@@ -60,7 +60,7 @@ Before proceeding, ensure you have the following installed:
 
 ```
 simple-cdcl/
-├── benchmarks          # Some SATLIB benchmark problems
+├── benchmarks          # Benchmark problems
 │   └── sat             # SAT instances
 │       └── ...
 │   └── unsat           # UNSAT instances
@@ -69,6 +69,8 @@ simple-cdcl/
 │   └── minisat
 ├── examples            # Simple examples for debugging
 │   └── cadical         # CaDiCaL tests
+│       └── ...
+│   └── satlib          # Some SATLIB tests
 │       └── ...
 │   └── other           # Other tests
 │       └── ...
@@ -82,6 +84,7 @@ simple-cdcl/
 ├── README.md           # Project documentation
 ├── run.sh              # Script for running MiniSat on the benchmarks
 └── uv.lock             # uv lock file
+└── ...
 ```
 
 ---

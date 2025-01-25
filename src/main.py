@@ -25,8 +25,6 @@ def main():
                 print("Fail to parse this instance.")
                 sys.exit(1)
 
-            print("instance parsed")
-
             variable_num, clause_num, formula = parsed_instance
             cdcl = CDCL(variable_num, clause_num, formula)
 
