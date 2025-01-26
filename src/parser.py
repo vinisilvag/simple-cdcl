@@ -18,14 +18,20 @@ def parse_dimacs_instance(instance: str) -> Optional[tuple[int, int, Formula]]:
         if not l:
             break
 
+        # match the line format
         match l[0]:
             case "c":
+                # comment, skip
                 continue
             case "p":
+                # problem definition, get the number of variables and clauses
                 problem = [x for x in l.split(" ") if x != ""]
                 variable_num = int(problem[2])
                 clause_num = int(problem[3])
             case _:
+                # clause line
+                # the parser can read clauses that are defined in multiple lines
+                # this is done by checking if the line ends with an "0"
                 if l[0] == "0":
                     break
 

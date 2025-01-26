@@ -54,11 +54,13 @@ class CDCL:
         literal_count = defaultdict(int)
         to_propagate = []
 
+        # count literal occurrences
         for clause in self.formula.clauses:
             for literal in clause.literals:
                 literal_count[literal] += 1
                 literal_count[literal.negation()] += 0
 
+        # if a literal occurs and its negation not, assign and propagate
         for lit, count in literal_count.items():
             if count > 0 and literal_count[lit.negation()] == 0:
                 if self.assignment[lit.variable] == None:
@@ -68,19 +70,18 @@ class CDCL:
         return to_propagate
 
     def solve_unit_clauses(self) -> list[Literal]:
+        # if is a unit clause, assign and add the literal to the propagation queue
         to_propagate = []
-
         for _, clause in enumerate(self.formula.clauses):
             if len(clause.literals) == 1:
                 literal = clause.literals[0]
                 if self.assignment[literal.variable] == None:
                     self.assign(literal.variable, not literal.is_negated, None)
                     to_propagate.insert(0, literal)
-
         return to_propagate
 
-    # can be improved I guess
     def all_clauses_are_satisfied(self) -> bool:
+        # count the number of satisfied clauses and compare with the total of clauses
         satisfied = 0
         for clause in self.formula.clauses:
             for literal in clause.literals:
@@ -208,28 +209,34 @@ class CDCL:
 
         literals_watched = 0
 
+        # set the new watched literals to the newest assigned literals
         for literal in literals:
             if literals_watched < 2:
                 self.watched_literals[literal].append(clause_index)
                 literals_watched += 1
 
     def backjump(self, new_decision_level: int):
+        # list of assignments to remove
         to_remove = [
             assignment
             for assignment in self.M
             if assignment.decision_level > new_decision_level
         ]
+
+        # remove every assignment
         for assignment in to_remove:
             self.unassign(assignment.literal)
 
+        # update the decision level
         self.decision_level = new_decision_level
 
-        return to_remove[0]
-
     def conflict_analysis(self, clause: int) -> tuple[int, Clause]:
+        # a list to store already treated literals
         seen = []
 
         learned_clause = self.formula.clauses[clause]
+
+        # literals in the learned clause that were propagated at the current decision level
         literals = [
             assignment
             for assignment in self.M
@@ -238,16 +245,20 @@ class CDCL:
             and assignment.antecedent != None
         ]
 
+        # while we have literals to process
         while len(literals) != 0:
             literal = literals.pop()
             if literal in seen:
                 continue
             seen.append(literal)
+            # apply resolution with the learned clause and the antecedent clause of the literal
+            # the literal is used as the pivot
             learned_clause = self.resolution(
                 learned_clause,
                 self.formula.clauses[literal.antecedent],
                 Literal(literal.literal, not literal.value),
             )
+            # get the literals of the new learned clause
             literals = [
                 assignment
                 for assignment in self.M
@@ -278,6 +289,7 @@ class CDCL:
             reverse=True,
         )
 
+        # return the decision level based on the number of decision levels in the list
         if len(decision_levels) < 2:
             return 0, learned_clause
         else:
@@ -286,7 +298,7 @@ class CDCL:
     def solve(self):
         # purify step
         to_propagate = []
-        # to_propagate.extend(self.solve_only_negative_or_positive_literals())
+        to_propagate.extend(self.solve_only_negative_or_positive_literals())
         literals_from_unit_clauses = self.solve_unit_clauses()
 
         to_propagate.extend(literals_from_unit_clauses)
@@ -297,6 +309,7 @@ class CDCL:
             return None
 
         while not self.all_clauses_are_satisfied():
+            # decide a literal
             literal, value = self.choose_literal()
             self.decision_level += 1
             self.assign(literal.variable, value, None)
@@ -315,6 +328,8 @@ class CDCL:
                         clause_index
                     )
 
+                    # learn, backjump and assignment of the non assigned
+                    # literal in the learned clause
                     self.learn(conflict_clause)
                     self.backjump(new_decision_level)
                     for literal in conflict_clause.literals:
@@ -328,7 +343,8 @@ class CDCL:
                             to_propagate.append(literal)
                             break
                 else:
-                    # propagated, deciding new variable in the next iteration
+                    # all literals propagated, deciding new variable
+                    # in the next iteration
                     break
 
         return self.M
