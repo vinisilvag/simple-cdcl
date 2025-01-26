@@ -46,12 +46,7 @@ Before proceeding, ensure you have the following installed:
 
 1. **Run the Application**:
    ```bash
-   uv run src/main.py solve "./path/to/the-instance.cnf"
-   ```
-
-2. **Run benchmarks**:
-   ```bash
-   uv run src/main.py benchmark 
+   uv run src/main.py "./path/to/the-instance.cnf"
    ```
 
 ---
