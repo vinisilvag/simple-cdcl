@@ -11,6 +11,3 @@ maintainers = [{name = "Vinicius Gomes", email = "vinicius.svgomes@gmail.com"}]
 
 [project.urls]
 Repository = "https://github.com/vinisilvag/simple-cdcl.git"
-
-[project.scripts]
-solver = "simple-cdcl.src.main:main"
