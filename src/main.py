@@ -36,7 +36,7 @@ def main():
     else:
         print("s UNSATISFIABLE")
 
-    print((end - start) * 1000, "ms")
+    # print((end - start) * 1000, "ms")
 
     sys.exit(0)
 

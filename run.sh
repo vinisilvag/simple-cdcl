@@ -26,7 +26,7 @@ for instance_path in benchmarks/unsat/*.cnf; do
   echo "Running my implementation and MiniSat on $instance..."
 
   echo "Running my implementation..."
-  timeout 10m uv run src/main.py "benchmarks/unsat/$instance" >> "benchmarks/results/solver/unsat/$instance.txt"
+  timeout 20m uv run src/main.py "benchmarks/unsat/$instance" >> "benchmarks/results/solver/unsat/$instance.txt"
   EXIT_STATUS=$?
   if [ $EXIT_STATUS -eq 124 ]
   then
