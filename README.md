@@ -56,14 +56,18 @@ Before proceeding, ensure you have the following installed:
 ```
 simple-cdcl/
 ├── benchmarks          # Benchmark problems
+│   └── results         # Results of the benchmarks
+│       ├── minisat     # Outputs of MiniSat
+│       ├── solver      # Outputs of the solution
+│       └── output.csv  # Generated .csv with the measured information
 │   └── sat             # SAT instances
 │       └── ...
 │   └── unsat           # UNSAT instances
 │       └── ...
 ├── binaries            # Binaries used (MiniSat)
-│   └── minisat
+│   └── minisat         # MiniSat 2.2 binary
 ├── examples            # Simple examples for debugging
-│   └── cadical         # CaDiCaL tests
+│   └── cadical         # Some CaDiCaL tests
 │       └── ...
 │   └── satlib          # Some SATLIB tests
 │       └── ...
@@ -76,7 +80,9 @@ simple-cdcl/
 │   └── parser.py       # DIMACS CNF parser implementation
 ├── LICENSE             # License file
 ├── pyproject.toml      # Project configuration file
+├── report.pdf          # Implementation report
 ├── README.md           # Project documentation
+├── analysis.ipynb      # Python Notebook to analyze the benchmark data
 ├── run.sh              # Script for running MiniSat on the benchmarks
 └── uv.lock             # uv lock file
 └── ...
